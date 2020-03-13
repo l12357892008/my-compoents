@@ -76,7 +76,7 @@
       },
       maxlength: {  // 输入最大长度
         type: String,
-        default: '99'
+        default: '300'
       },
       required:{  // 该项输入框是否必填
         type: Boolean,
@@ -88,7 +88,9 @@
       }
     },
     created() {
-      this.color1 = color
+      this.length = parseInt(this.maxlength)
+      console.log(this.length)
+      console.log(this.maxlength)
     },
     computed:{
       check() {  // 自动检测输入是否为空
@@ -123,13 +125,13 @@
         }
         if(!this.bank){  // 不空判断格式
           if(this.type === 'tel'){
-            if(Verify.isPhone(this.Data.form[this.Data.name])){  // 电话格式是否正确
+            if(!Verify.isPhone(this.Data.form[this.Data.name])){  // 电话格式是否正确
               this.mistake = true
               this.$options.methods.startFlu(this)
               return
             }
           }else if(this.type === 'email'){
-            if(Verify.isEmail(this.Data.form[this.Data.name])){  // 邮件格式是否正确
+            if(!Verify.isEmail(this.Data.form[this.Data.name])){  // 邮件格式是否正确
               this.mistake = true
               this.$options.methods.startFlu(this)
               return

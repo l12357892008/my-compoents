@@ -1,15 +1,15 @@
 <template>
   <div id="Login" class="flex_center">
     <div class="flex_col_center" style="width: 100%;align-items: center;">
-      <div class="titleIcon flex_center">
+      <div class="titleIcon flex_center" style="margin-top: -100px;">
         <div class="titleIcon2 flex_center">
           <img class="image" src="./img/group.png" />
         </div>
       </div>
       <div class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
       <div class="flex_col wrapper" style="align-items: center;">
-          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 450px;margin: 30px 0;' />
-          <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 450px'/>
+          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;' />
+          <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 80%'/>
           <el-button class="submit" @click='login' :style="{backgroundColor:color}">LOGIN</el-button>
       </div>
     </div>
@@ -82,12 +82,12 @@
       font-weight: 700;
     }
     .wrapper{
-      width: 35%;
+      width: 32%;
       background: white;
       padding: 20px 15px;
       border-radius: 5px;
       .submit{
-        width: 430px;
+        width: 70%;
         color: white;
         font-size: 18px;
         font-weight: 700;

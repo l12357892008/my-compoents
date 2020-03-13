@@ -6,8 +6,8 @@ import router from './router'
 import store from './vuex/store.js'
 import {post,get} from '@/utils/http'   // axois封装
 import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-chalk/index.css'
-import '@/element-theme.scss'  // elementui主题色修改
+import 'element-ui/lib/theme-chalk/index.css'
+// import '@/element-theme.scss'  // elementui主题色修改
 import 'asset/css/myCss.css'  // 自定义css库
 import 'asset/css/reset.css'  // 消除浏览器样式
 

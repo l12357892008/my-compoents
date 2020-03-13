@@ -30,29 +30,29 @@ axios.defaults.baseURL = 'http://www.4399.com/api';
 
 
 //http response 拦截器
-axios.interceptors.response.use(
-  response => {
-    if (response.data.code == 10002) {
-      Message({
-        showClose: true,
-        message: '登录过期',
-        type: 'error',
-        duration: 1000
-      })
-      localStorage.clear()
-      router.push({
-        path: "/login",
-        querry: {
-          redirect: router.currentRoute.fullPath
-        } //从哪个页面跳转
-      })
-    }
-    return response;
-  },
-  error => {
-    return Promise.reject(error)
-  }
-)
+// axios.interceptors.response.use(
+//   response => {
+//     if (response.data.code == 10002) {
+//       Message({
+//         showClose: true,
+//         message: '登录过期',
+//         type: 'error',
+//         duration: 1000
+//       })
+//       localStorage.clear()
+//       router.push({
+//         path: "/login",
+//         querry: {
+//           redirect: router.currentRoute.fullPath
+//         } //从哪个页面跳转
+//       })
+//     }
+//     return response;
+//   },
+//   error => {
+//     return Promise.reject(error)
+//   }
+// )
 
 
 /**
