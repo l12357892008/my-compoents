@@ -1,0 +1,87 @@
+<template>
+  <div id="Login" class="flex_center">
+    <div class="flex_col_center" style="width: 100%;align-items: center;">
+      <div class="titleIcon flex_center">
+        <div class="titleIcon2 flex_center">
+          <img class="image" src="./img/group.png" />
+        </div>
+      </div>
+      <div class="BigTitle" style="margin: 60px 0;">用户登录</div>
+      <div class="flex_col wrapper" style="align-items: center;">
+        <div class="BigTitle">用户登录</div>
+        <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 450px'/>
+        <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 450px'/>
+        <el-button @click='login' style="width: 450px;background-color: #F36;color: white;font-size: 18px;font-weight: 700;">LOGIN</el-button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Input from '~/Input/index'
+  export default {
+    data() {
+      return {
+        form: {
+          name: '',
+          password:'',
+        }
+      }
+    },
+    props: {
+    },
+    mounted() {
+    },
+    methods: {
+      login() {
+        this.$store.dispatch('setAutoCheck',!this.$store.state.autoCheck)
+      }
+    },
+    components:{Input}
+  }
+</script>
+
+<style lang="scss" scoped>
+  #Login{
+    background-image: url(./img/background.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    background-size: 100% 100%;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+
+    .titleIcon{
+      width: 130px;
+      height: 130px;
+      background: white;
+      transform: rotate(45deg);
+      .titleIcon2{
+        width: 110px;
+        height: 110px;
+        border: 1px solid #F36;
+
+        .image{
+          color: #F36;
+          width: 60px;
+          height: 60px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .BigTitle{
+      font-size: 20px;
+      color: #008B8B;
+      font-weight: 700;
+    }
+    .wrapper{
+      width: 35%;
+      background: white;
+      padding: 20px 15px;
+      border-radius: 5px;
+    }
+  }
+</style>

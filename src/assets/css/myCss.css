@@ -1,0 +1,65 @@
+/*个人css库*/
+
+.partition{  /*下分界线*/
+  border-bottom: 1px solid rgb(187, 187, 187);
+}
+.partitions{ /*上下分界线*/
+  border-bottom: 1px solid rgb(187, 187, 187);
+  border-top: 1px solid rgb(187, 187, 187);
+}
+.partition_dashed{ /*下分界虚线*/
+  border-bottom: 1px dashed rgb(187, 187, 187);
+}
+.flex_row{ /*水平布局*/
+  display: flex;
+  flex-direction: row;
+}
+.flex_row_middle{ /*水平布局上下居中*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flex_row_center{ /*水平布局左右居中*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.flex_col{ /*垂直布局*/
+  display: flex;
+  flex-direction: column;
+}
+.flex_col_center{ /*垂直布局上下居中*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex_center{  /*上下左右居中*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+.flex{  /*有空闲位置放大，位置不够也不缩小*/
+  flex: 1 0;
+}
+.hover_big,{  /*鼠标悬浮放大*/
+    transition: all .4s;
+}
+.hover_big:hover{
+    transform: scale(1.2);
+}
+.flutter{  /*抖动*/
+  animation: flu infinite 0.2s linear;
+}
+@keyframes flu {
+  0% {
+    transform: translateX(2px);
+  }
+  50% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(2px);
+  }
+}
