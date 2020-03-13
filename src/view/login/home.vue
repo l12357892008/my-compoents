@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <Login/>
+    <Login @login='login'/>
   </div>
 </template>
 
@@ -16,6 +16,14 @@
     mounted() {
     },
     methods: {
+      login(data) {
+        let _data = {
+          name: data.name,
+          password: data.password
+        }
+        // this.$post('',_data).then(res => {
+        // })
+      }
     },
     components:{Login}
   }

@@ -6,12 +6,11 @@
           <img class="image" src="./img/group.png" />
         </div>
       </div>
-      <div class="BigTitle" style="margin: 60px 0;">用户登录</div>
+      <div class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
       <div class="flex_col wrapper" style="align-items: center;">
-        <div class="BigTitle">用户登录</div>
-        <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 450px'/>
-        <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 450px'/>
-        <el-button @click='login' style="width: 450px;background-color: #F36;color: white;font-size: 18px;font-weight: 700;">LOGIN</el-button>
+          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 450px;margin: 30px 0;' />
+          <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 450px'/>
+          <el-button class="submit" @click='login' :style="{backgroundColor:color}">LOGIN</el-button>
       </div>
     </div>
   </div>
@@ -23,9 +22,10 @@
     data() {
       return {
         form: {
-          name: '',
-          password:'',
-        }
+          name: '',  // 账号
+          password:'', // 密码
+        },
+        color: '#F36',  // 按钮颜色
       }
     },
     props: {
@@ -33,8 +33,12 @@
     mounted() {
     },
     methods: {
-      login() {
-        this.$store.dispatch('setAutoCheck',!this.$store.state.autoCheck)
+      login() {  // 点击登录按钮向父组件传递账号密码
+        if(this.form.name && this.form.password){
+          this.$emit('login',this.form)
+        }else{
+          this.$message.error('请输入账号和密码')
+        }
       }
     },
     components:{Input}
@@ -82,6 +86,14 @@
       background: white;
       padding: 20px 15px;
       border-radius: 5px;
+      .submit{
+        width: 430px;
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 30px 0;
+        margin-left: 20px;
+      }
     }
   }
 </style>

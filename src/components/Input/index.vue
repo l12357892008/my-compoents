@@ -6,14 +6,14 @@
       </div>
       <el-input class="input" v-model="Data.form[Data.name]" :size='size' :show-password='type === "password"'  clearable :disabled='disabled'
                 @input="input" @blur='blur' :type='(type === "number" || type === "tel") ? "number" :　type'
-                :maxlength='length' :autosize="autosize" :show-word-limit='type === "textarea"' :placeholder='placeholder' 
+                :maxlength='length' :autosize="autosize" :show-word-limit='type === "textarea"' :placeholder='placeholder'
                 @mousewheel.native.prevent>
         <i slot="prefix" class="el-input__icon"
          :class="type === 'user' ? 'el-icon-user' :
                  type === 'password' ? 'el-icon-lock'  :
                  type === 'tel' ? 'el-icon-phone-outline'  :
                  type === 'email' ? 'el-icon-message'  : 'el-icon-edit-outline'"
-         :style="{color:color1,fontWeight:700}"/>
+         :style="{color:color,fontWeight:700}"/>
       </el-input>
     </div>
     <div class="flex_row" :class="flu ? 'flutter' : ''" v-if="required && bank">
@@ -37,7 +37,6 @@
         bank: false,  // 输入框是否为空
         mistake: false,  // 格式是否正确
         flu: false,   // 抖动动画
-        color1: '',  // 主题颜色
       }
     },
     props: {  // 从父组件接受的参数
@@ -82,6 +81,10 @@
       required:{  // 该项输入框是否必填
         type: Boolean,
         default: false
+      },
+      color: {
+        type: String,
+        default: color
       }
     },
     created() {
