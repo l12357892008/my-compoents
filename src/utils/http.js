@@ -1,3 +1,8 @@
+// npm install axios,elementui -S
+/**
+ * @description http连接封装
+*/
+
 import axios from 'axios';
 import {
   Message
@@ -6,7 +11,7 @@ import router from '../router'
 
 axios.defaults.timeout = 5000;
 // axios.defaults.baseURL = 'http://www.51jl.store/api';
-axios.defaults.baseURL = 'http://www.4399.com/api';
+axios.defaults.baseURL = 'http://www.4399.com';
 
 //http request 拦截器
 // axios.interceptors.request.use(
@@ -30,29 +35,35 @@ axios.defaults.baseURL = 'http://www.4399.com/api';
 
 
 //http response 拦截器
-// axios.interceptors.response.use(
-//   response => {
-//     if (response.data.code == 10002) {
-//       Message({
-//         showClose: true,
-//         message: '登录过期',
-//         type: 'error',
-//         duration: 1000
-//       })
-//       localStorage.clear()
-//       router.push({
-//         path: "/login",
-//         querry: {
-//           redirect: router.currentRoute.fullPath
-//         } //从哪个页面跳转
-//       })
-//     }
-//     return response;
-//   },
-//   error => {
-//     return Promise.reject(error)
-//   }
-// )
+axios.interceptors.response.use(
+  response => {
+    // if (response.data.code == 10002) {
+    //   Message({
+    //     showClose: true,
+    //     message: '登录过期',
+    //     type: 'error',
+    //     duration: 1000
+    //   })
+    //   localStorage.clear()
+    //   router.push({
+    //     path: "/login",
+    //     querry: {
+    //       redirect: router.currentRoute.fullPath
+    //     } //从哪个页面跳转
+    //   })
+    // }
+    return response;
+  },
+  error => {
+    if(error.message.includes('timeout')){
+      Message({
+        message: '连接超时,请检查您的网络状况后刷新页面',
+        type: 'error'
+      })
+    }
+    return Promise.reject(error)
+  }
+)
 
 
 /**
