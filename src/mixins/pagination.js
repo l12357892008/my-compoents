@@ -1,10 +1,10 @@
 /**
- * 分页配置信息
+ * @description 分页配置信息
  */
 export default {
     data() {
         return {
-            fetchFnName: 'getList',   // 加载列表数据方法名称（组件内部如有不同 可替换）
+            fetchFnName: 'getList',   // 加载列表数据方法名称（组件内部如有不同 可替换）,换页后调用的重新获取类别的方法
             page: {
                 sizes: [20, 50, 100],
                 size: 20,

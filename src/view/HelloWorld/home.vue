@@ -8,10 +8,11 @@
     </div>
     <el-button class="hover_big" type='primary' size='mini' @click='cc'>确定</el-button>
     <Input title='手机号11' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='email' maxlength='5'  style='width: 600px'/>
-    <Input title='手机号' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='tel' required style='width: 600px'/>
-    <Input title='手机号' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='user'  style='width: 600px'/>
-    <Input title='手机号' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='password' required style='width: 600px'/>
-    <Input title='手机号' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='textarea'  style='width: 600px'/>
+    
+    
+    <h1>
+      safasd
+    </h1>
   </div>
 </template>
 

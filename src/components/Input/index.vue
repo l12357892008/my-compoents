@@ -1,8 +1,30 @@
+<!--
+  describe:
+  1.所需依赖，elementui main.js中引入
+    import ElementUI from 'element-ui'
+    import 'element-ui/lib/theme-chalk/index.css'
+  2.传入数据:
+    必填项:
+      1.Data: Object,两个属性,form: 父组件中的数据对象，name:传过来的对象中要操作的属性
+    其他项:
+      1.title: String,输入框前面的文字描述,ex:'账号'
+      2.titleWidth: String,输入框前面的文字描述区域宽度,不传自适应,ex:'150px'
+      3.placeholder: String,输入框未输入时的占位符
+      4.size: String,输入框尺寸,不输/乱写, medium,small,mini 四种大小
+      5.type：String,输入的数据的类型,文本text,账号user,密码password，数字number，电话号码tel，邮件email,
+        多行输入框textarea,搜索框search.
+        tel和email有正则检测,密码有隐藏查看,根据类型显示图标,不输则无图标
+      6.autosize：Object,仅type=textarea时有效果,ex{minRows:4,maxRows:10}
+      7.disabled:boolean,是否禁用
+      8.maxlength：String, 输入最大长度
+      9.required: boolean,是否必须，true后不输会有提示
+      10.color：String, 图标颜色
+-->
 <template>
   <div id="Input" style="margin: 10px 0;">
     <div class="flex_row" style="align-items: center;width: 100%;margin-bottom: 1px;">
-      <div style='flex:none;text-align: end;margin-right: 20px;' :style="'width:' + titleWidth">
-        {{title ? title + ' : ' :　''}}
+      <div v-if="title" style='flex:none;text-align: end;margin-right: 20px;' :style="'width:' + titleWidth">
+        {{title + ' : '}}
       </div>
       <el-input class="input" v-model="Data.form[Data.name]" :size='size' :show-password='type === "password"'  clearable :disabled='disabled'
                 @input="input" @blur='blur' :type='(type === "number" || type === "tel") ? "number" :　type'
@@ -12,7 +34,9 @@
          :class="type === 'user' ? 'el-icon-user' :
                  type === 'password' ? 'el-icon-lock'  :
                  type === 'tel' ? 'el-icon-phone-outline'  :
-                 type === 'email' ? 'el-icon-message'  : 'el-icon-edit-outline'"
+                 type === 'email' ? 'el-icon-message'  :
+                 type === 'search' ? 'el-icon-search'  :
+                 type === 'text' ? 'el-icon-edit-outline'  : ''"
          :style="{color:color,fontWeight:700}"/>
       </el-input>
     </div>
@@ -82,7 +106,7 @@
         type: Boolean,
         default: false
       },
-      color: {
+      color: {  // 图标颜色
         type: String,
         default: color
       }

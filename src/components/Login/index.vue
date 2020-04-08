@@ -1,3 +1,8 @@
+<!-- 登录界面 -->
+<!-- 所需依赖:elementui
+     使用: <Login @login='function (){}'>
+     函数返回值: data:{name:String,password:String}
+-->
 <template>
   <div id="Login" class="flex_center">
     <div class="flex_col_center" style="width: 100%;align-items: center;">
@@ -8,9 +13,9 @@
       </div>
       <div class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
       <div class="flex_col wrapper" style="align-items: center;">
-          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;' />
+          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;'/>
           <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 80%'/>
-          <el-button class="submit" @click='login' :style="{backgroundColor:color}">LOGIN</el-button>
+          <el-button class="submit" @click='login' :style="{backgroundColor:color,width:'80%'}">LOGIN</el-button>
       </div>
     </div>
   </div>
@@ -87,12 +92,10 @@
       padding: 20px 15px;
       border-radius: 5px;
       .submit{
-        width: 70%;
         color: white;
         font-size: 18px;
         font-weight: 700;
         margin: 30px 0;
-        margin-left: 20px;
       }
     }
   }

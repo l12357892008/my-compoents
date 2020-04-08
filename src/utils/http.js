@@ -1,6 +1,6 @@
-// npm install axios,elementui -S
+// 所需依赖:npm install axios,elementui -S
 /**
- * @description http连接封装
+ * @description http请求封装
 */
 
 import axios from 'axios';

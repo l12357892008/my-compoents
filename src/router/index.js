@@ -14,6 +14,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: () => import('@/view/login/home')
+    },
+    {
+      path: '/hel',
+      name: 'hel',
+      component: () => import('@/view/hel/index')
+    },
+    {
+      path: '/wu',
+      name: 'wu',
+      component: () => import('@/view/wu/index')
     }
   ]
 })
