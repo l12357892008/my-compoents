@@ -1,0 +1,164 @@
+@import "common/var";
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "mixins/config";
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+@mixin button-variant($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: mix(white, $background-color, $button-hover-tint-percent);
+    border-color: mix(white, $border-color, $button-hover-tint-percent);
+    color: $color;
+  }
+
+  &:active {
+    background: mix(black, $background-color, $button-active-shade-percent);
+    border-color: mix(black, $border-color, $button-active-shade-percent);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-disabled {
+
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: white;
+      background-color: mix(white, $background-color, 35%);
+      border-color: mix(white, $border-color, 35%);
+    }
+  }
+}
+
+@include b(button) {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background-color: $button-default-background-color;
+  border: $border-default;
+  color: $button-default-font-color;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: $button-font-weight;
+  @include button-size($button-padding-vertical, $button-padding-horizontal, $button-font-size, $button-border-radius);
+  @include utils-user-select(none); // 不允许用户选中按钮里的文字
+
+  /* x + y {}  紧跟在x后面的y,x、y有相同父元素 */
+  &+& {
+    margin-left: 10px;
+  }
+
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    border-color: $color-primary-light;
+    background-color: $color-primary-lighter;
+  }
+
+  &:active {
+    color: $color-primary-dark;
+    border-color: $color-primary-dark;
+    outline: none;
+  }
+
+  // 对火狐浏览器，设置了outline点击还是可能会有虚线，需要单独设置一下
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  // a[class*='abs'] 选择class属性中包含abs的a元素 , #demo[class*='abs'],选择class属性以abs开头的id为demo的元素
+  & [class*='el-icon-'] {
+    &+span {
+      margin-left: 0px;
+    }
+  }
+
+  // 按钮被禁用
+  @include when(disabled) {
+
+    &,
+    &:hover,
+    &:focus {
+      color: $button-disabled-font-color;
+      cursor: not-allowed;
+      background-color: $button-disabled-background-color;
+      border-color: $button-disabled-border-color;
+    }
+  }
+
+  // 圆角按钮
+  @include when(round) {
+    border-radius: 20px;
+    padding: 12px 23px;
+  }
+
+  // 圆形按钮
+  @include when(circle) {
+    border-radius: 50%;
+    padding: $button-padding-vertical;
+  }
+
+  // 主要按钮 蓝色
+  @include m(primary) {
+    @include button-variant($button-primary-font-color, $button-primary-background-color, $button-primary-border-color);
+  }
+
+  // 成功按钮 绿色
+  @include m(success) {
+    @include button-variant($button-success-font-color, $button-success-background-color, $button-success-border-color);
+  }
+
+  // 警告按钮 橙色
+  @include m(warning) {
+    @include button-variant($button-warning-font-color, $button-warning-background-color, $button-warning-border-color);
+  }
+
+  // 危险按钮 红色
+  @include m(danger) {
+    @include button-variant($button-danger-font-color, $button-danger-background-color, $button-danger-border-color);
+  }
+
+  // 信息按钮 灰色
+  @include m(info) {
+    @include button-variant($button-info-font-color, $button-info-background-color, $button-info-border-color);
+  }
+
+  @include m(big) {
+    @include button-size($button-big-padding-vertical, $button-big-padding-horizontal, $button-big-font-size, $button-big-border-radius);
+
+    @include when(circle) {
+      padding: $button-big-padding-vertical;
+    }
+  }
+
+  @include m(small) {
+    @include button-size($button-small-padding-vertical, $button-small-padding-horizontal, $button-small-font-size, $button-small-border-radius);
+
+    @include when(circle) {
+      padding: $button-small-padding-vertical;
+    }
+  }
+
+  @include m(mini) {
+    @include button-size($button-mini-padding-vertical, $button-mini-padding-horizontal, $button-mini-font-size, $button-mini-border-radius);
+
+    @include when(circle) {
+      padding: $button-mini-padding-vertical;
+    }
+  }
+}

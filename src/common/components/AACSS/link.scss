@@ -1,0 +1,26 @@
+@import "common/var";
+@import "mixins/mixins";
+
+$typeMap: (
+  primary: $color-primary,
+  danger: $color-danger,
+  success: $color-success,
+  warning: $color-warning,
+  info: $color-info
+);
+
+@include b(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: $link-font-size;
+  font-weight: $link-font-weight;
+
+}

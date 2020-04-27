@@ -11,7 +11,7 @@
           <img class="image" src="./img/group.png" />
         </div>
       </div>
-      <div class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
+      <div ref='cc' class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
       <div class="flex_col wrapper" style="align-items: center;">
           <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;'/>
           <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 80%'/>
@@ -36,6 +36,7 @@
     props: {
     },
     mounted() {
+      console.log(this.$refs.cc);
     },
     methods: {
       login() {  // 点击登录按钮向父组件传递账号密码

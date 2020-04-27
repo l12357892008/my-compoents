@@ -113,8 +113,6 @@
     },
     created() {
       this.length = parseInt(this.maxlength)
-      console.log(this.length)
-      console.log(this.maxlength)
     },
     computed:{
       check() {  // 自动检测输入是否为空

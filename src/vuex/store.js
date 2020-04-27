@@ -5,10 +5,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+console.log('vuex加载');
 const state = {  //这里放全局参数,获取ex: this.$store.state.autoCheck,一般使用getters来获取
   autoCheck: true,  // 表单提交时转换该值，输入组件监听根据需要自动检测输入是否为空
 }
-const getters = {  // 获取函数,ex: this.$store.getter.getAutoCheck
+const getters = {  // 获取函数,ex: this.$store.getters.getAutoCheck
   getAutoCheck: state => { // 方便统一对返回值做一些处理
     return state.autoCheck
   },

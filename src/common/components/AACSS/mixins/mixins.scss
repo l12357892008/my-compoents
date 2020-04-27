@@ -1,0 +1,34 @@
+@import 'config';
+
+/* BEM规范
+ --------------------------------------------------------------------*/
+@mixin b($block) {
+  $B: $namespace + '-'+ $block;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin m($modifier) {
+  $currentSelector: "";
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-link + $unit + ","};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+/*-------------------------------------------------------------------*/
+
+@mixin when($state) {
+  @at-root {
+    // .cc.bb 同时拥有cc bb两个类名的元素
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}

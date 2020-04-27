@@ -26,72 +26,64 @@ index.html add
       addresses: {
         type: Object,
         required: true
-      }
+      },
+      courier: Object,
     },
     created() {
       this.shop.lat = Number(this.shop.lat)
       this.shop.lng = Number(this.shop.lng)
       this.addresses.lat = Number(this.addresses.lat)
       this.addresses.lng = Number(this.addresses.lng)
+      if(this.courier){
+        this.courier.lat = Number(this.courier.lat)
+        this.courier.lng = Number(this.courier.lng)
+      }
     },
     mounted() {
-      this.MapInit(this.shop,this)
-      this.MapDotInit(this.shop,this.addresses,this)
+      this.MapInit(this)
+      if(this.courier){
+        this.MapDotInit(this.courier,this)
+      }
     },
     methods: {
-      MapInit(shop,that) { // 地图初始化
+      MapInit(that) { // 地图初始化
         map = new BMap.Map("XSDFXPage", {
           enableMapClick: true
         });
         // 初始化地图,设置中心点坐标和地图级别
-        map.centerAndZoom(new BMap.Point(shop.lng, shop.lat), 14);
+        map.centerAndZoom(new BMap.Point(104.06, 30.67), 15);
         // 设置地图显示的城市 此项是必须设置的
         map.setCurrentCity("成都");
         // 开启鼠标滚轮缩放
         map.enableScrollWheelZoom(true);
-
-        // 距离标尺
+        // 比例标尺
         map.addControl(new BMap.ScaleControl({
           anchor: BMAP_ANCHOR_TOP_LEFT
         }));
-
-        // 右下放大缩小按钮
-        map.addControl(new BMap.NavigationControl({
-          anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
-          type: BMAP_NAVIGATION_CONTROL_SMALL
-        }));
-
-        // 骑行路径
-        // var riding = new BMap.RidingRoute(map, {
-        //     renderOptions: {
-        //         map: map,
-        //         autoViewport: true
-        //     }
-        // });
-        // var start = new BMap.Point(that.shop.lng, that.shop.lat);
-        // var end = new BMap.Point(that.addresses.lng, that.addresses.lat);
-        // riding.search(start, end);
+        // 右下缩放按钮
+        map.addControl(new BMap.NavigationControl());
+        //骑行路径
+        var riding = new BMap.RidingRoute(map, {
+            renderOptions: {
+                map: map,
+                autoViewport: true
+            }
+        });
+        var start = new BMap.Point(that.shop.lng, that.shop.lat);
+        var end = new BMap.Point(that.addresses.lng, that.addresses.lat);
+        riding.search(start, end);
       },
-      MapDotInit(shop, addresses, that) { // 地图图标初始化
+      MapDotInit(courierP, that) { // 地图图标初始化
         map.clearOverlays() // 清除旧的标注点
         //定义新图标
-        let start = new BMap.Icon(that.icon1, new BMap.Size(30, 30));
-        let end = new BMap.Icon(that.icon2, new BMap.Size(30, 30));
         let courier = new BMap.Icon(that.icon3, new BMap.Size(30, 30));
-        let startMarker = new BMap.Marker(new BMap.Point(shop.lng, shop.lat), {
-          icon: start
+        let courierMarker = new BMap.Marker(new BMap.Point(courierP.lng, courierP.lat), {
+          icon: courier
         })
-        map.addOverlay(startMarker)
-        startMarker.addEventListener('click', res => {
-          console.log(res)
-        })
-        let endMarker = new BMap.Marker(new BMap.Point(addresses.lng, addresses.lat), {
-          icon: end
-        })
-        map.addOverlay(endMarker)
-        endMarker.addEventListener('click', res => {
-          console.log(res)
-        })
+        map.addOverlay(courierMarker)
+        // courierMarker.addEventListener('click', res => {
+        //   console.log(res)
+        // })
       },
     },
     components: {}

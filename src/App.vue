@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <div class="flex_row_center">
-      head
-    </div>
     <transition name="fade1" mode="out-in">
-      <router-view v-if="cc" />
+      <router-view v-if="cc" style="flex:1 0" />
     </transition>
   </div>
 </template>
@@ -27,36 +24,53 @@
         cc: true
       }
     },
+    created() {
+      this.init()
+    },
     mounted() {
       // const socket = new WebSocketClass('ws://ws.maixiaobu.cn:8977?group=admin')
-      // console.log(formatDate.format(new Date))
-      // this.cli()
     },
     methods: {
-      async cli() {
-        let bb = await this.$options.methods.settime()
-        // console.log(bb)
-        // console.log('dd')
-        try {
-          let dd = await this.$get('')
-          // console.log(dd)
-        } catch (e) {
-          // console.log('error:' + e)
-        }
-        // console.log('afsd')
+      /**
+       * @description 初始化
+      */
+      async init() {  // 初始化
+        // let res = await this.getRouter()  // 获取路由
+        // let res2 = await this.start(res.power)
+        this.start();
       },
-      async reload() {
-        this.cc = false
-        await this.$nextTick()
+      async start(power) {
+        // power.some(i => {
+        //   return i.path === '/wu'
+        // })  // true
+        let newRoute = [{
+            path: '/wu',
+            name: 'wu',
+            component: resolve => require(['@/view/wu/index'], resolve),
+          },
+          {
+            path: '/hel',
+            name: 'hel',
+            component: resolve => require(['@/view/hel/index'], resolve),
+          },
+        ]
+        this.$router.options.routes = this.$router.options.routes.concat(newRoute)
+        await this.$router.addRoutes(newRoute);
+        console.log(this.$router.options.routes);
         this.cc = true
       },
-      settime() {
-        return new Promise((resolve, reject) => { // 必须要返回一个Promise ,await才会生效
-          setTimeout(() => {
-            resolve('asf')
-          }, 2000)
-        })
-      }
+      async getRouter() {  // 获取路由权限
+        try {
+          let res = await this.$get('http://127.0.0.1:10086/cc')
+          return res
+        } catch (e) {
+          this.$message({
+            message: '连接失败,请稍后再试',
+            type: 'error'
+          })
+          return e
+        }
+      },
     },
 
   }
@@ -89,9 +103,4 @@
     opacity: 1;
   }
 
-
-  .amap-wrapper {
-    width: 500px;
-    height: 500px;
-  }
 </style>

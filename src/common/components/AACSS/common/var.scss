@@ -1,0 +1,108 @@
+// 基本变量
+
+
+/* Color
+------------------------------------*/
+$color-primary: #409EFF !default; // Primary Color
+$color-success: #67C23A !default;
+$color-warning: #E6A23C !default;
+$color-danger: #F56C6C !default;
+$color-info: #909399 !default;
+
+$color-primary-light: mix(#FFFFFF, $color-primary, 70%) !default; // c6e2ff 
+$color-success-light: mix(white, $color-success, 70%) !default;
+$color-warning-light: mix(white, $color-warning, 70%) !default;
+$color-danger-light: mix(white, $color-danger, 70%) !default;
+$color-info-light: mix(white, $color-info, 70%) !default;
+
+$color-primary-lighter: mix(#FFFFFF, $color-primary, 90%) !default; // ecf5ff 
+$color-success-lighter: mix(white, $color-success, 90%) !default;
+$color-warning-lighter: mix(white, $color-warning, 90%) !default;
+$color-danger-lighter: mix(white, $color-danger, 90%) !default;
+$color-info-lighter: mix(white, $color-info, 90%) !default;
+
+$color-primary-dark: mix(#000000, $color-primary, 10%) !default; // ecf5ff 
+
+$color-text-placeholder: #C0C4CC !default; // placeholder
+$color-text-regular: #606266 !default; // 正常黑色字体颜色
+
+/* Font
+-------------------------------------------------*/
+$font-display: 'auto' !default;
+$font-weight-primary: 500 !default;
+$font-size-base: 14px !default;
+
+/* Border
+------------------------------------*/
+$border-width-base: 1px !default; // 边框默认大小
+$border-style-base: solid !default; // 边框默认格式
+$border-color-base: #DCDFE6 !default; // 边框默认颜色
+$border-color-hover: $color-text-placeholder !default;
+$border-color-light: #E4E7ED !default;
+$border-color-lighter: #EBEEF5 !default;
+$border-color-lightest: #F2F6FC !default;
+$border-radius-base: 4px !default;
+$border-default: $border-width-base $border-style-base $border-color-base !default;
+
+/* Button
+------------------------------------*/
+$button-font-size: $font-size-base !default;
+$button-font-weight: $font-weight-primary !default;
+$button-border-radius: $border-radius-base !default;
+$button-padding-vertical: 12px !default;
+$button-padding-horizontal: 20px !default;
+
+$button-big-font-size: #{$font-size-base + 1} !default;
+$button-big-border-radius: #{$border-radius-base + 1} !default;
+$button-big-padding-vertical: 14px !default;
+$button-big-padding-horizontal: 24px !default;
+
+$button-small-font-size: #{$font-size-base - 1} !default;
+$button-small-border-radius: $border-radius-base !default;
+$button-small-padding-vertical: 9px !default;
+$button-small-padding-horizontal: 18px !default;
+
+$button-mini-font-size: #{$font-size-base - 2} !default;
+$button-mini-border-radius: #{$border-radius-base - 1} !default;
+$button-mini-padding-vertical: 7px !default;
+$button-mini-padding-horizontal: 15px !default;
+
+$button-default-font-color: $color-text-regular !default;
+$button-default-background-color: white !default;
+
+$button-primary-font-color: white !default;
+$button-primary-background-color: $color-primary !default;
+$button-primary-border-color: $color-primary !default;
+
+$button-success-font-color: white !default;
+$button-success-background-color: $color-success !default;
+$button-success-border-color: $color-success !default;
+
+$button-warning-font-color: white !default;
+$button-warning-background-color: $color-warning !default;
+$button-warning-border-color: $color-warning !default;
+
+$button-danger-font-color: white !default;
+$button-danger-background-color: $color-danger !default;
+$button-danger-border-color: $color-danger !default;
+
+$button-info-font-color: white !default;
+$button-info-background-color: $color-info !default;
+$button-info-border-color: $color-info !default;
+
+$button-disabled-font-color: $color-text-placeholder !default;
+$button-disabled-background-color: white !default;
+$button-disabled-border-color: $border-color-lighter !default;
+
+$button-hover-tint-percent: 20% !default;
+$button-active-shade-percent: 10% !default;
+
+/* Link
+ ------------------------------------------------*/
+$link-color: mix(#FFFFFF, $color-primary, 20%) !default;
+$link-hover-color: $color-primary !default;
+$link-font-size: $font-size-base !default;
+$link-font-weight: $font-weight-primary !default;
+$link-default-font-color: $color-text-regular !default;
+$link-default-active-color: $color-primary !default;
+$link-disabled-font-color: $color-text-placeholder !default;

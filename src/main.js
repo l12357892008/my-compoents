@@ -9,8 +9,9 @@ import ElementUI from 'element-ui'
 import BaiduMap from 'vue-baidu-map'
 import 'element-ui/lib/theme-chalk/index.css'
 // import '@/element-theme.scss'  // elementui主题色修改
-import 'asset/css/myCss.css'  // 自定义css库
-import 'asset/css/reset.css'  // 消除浏览器样式
+import '@/assets/css/css.js'
+
+console.log('main.js加载');
 
 Vue.config.productionTip = false
 
@@ -22,11 +23,22 @@ Vue.use(BaiduMap, {
 Vue.prototype.$post=post;  // use way: this.$post(url,data).then(res => {})
 Vue.prototype.$get=get;
 
+// router.beforeEach((to, from, next) => {
+//     console.log(to);
+//     if (to.meta.title) {
+//         document.title = to.meta.title
+//     }
+//     next()
+// })
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created(){
+    console.log('new Vue加载');
+  },
 })

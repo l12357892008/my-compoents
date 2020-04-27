@@ -14,6 +14,7 @@ export default class WebSocketClass{
   createWebSocket() {  // 创建WebSocket连接
     try {
       this.ws = new WebSocket(this.wsUrl);
+      console.log('创建WebSocket连接')
       this.init();
     } catch(e) {
       console.log('连接错误:' + e)
