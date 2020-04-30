@@ -1,0 +1,178 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+
+@include b(radio) {
+  color: $radio-font-color;
+  font-weight: $radio-font-weight;
+  font-size: $font-size-base;
+  line-height: 1;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  outline: none;
+  @include utils-user-select(none); // 不允许选中文本
+
+  @include when(bordered) {
+    padding: $radio-border-padding;
+    border-radius: $border-radius-base;
+    border: $border-default;
+    box-sizing: border-box;
+
+    @include when(checked) {
+      border-color: $color-primary;
+    }
+
+    @include when(disabled) {
+      cursor: not-allowed;
+      border-color: $border-color-lighter;
+    }
+
+    &+.my-radio.is-bordered {
+      margin-left: 30px;
+    }
+  }
+
+  @include m(small) {
+    @include when(bordered) {
+      padding: $radio-border-small-padding;
+      border-radius: $border-radius-base;
+
+      .my-radio__label {
+        font-size: $button-small-font-size;
+      }
+
+      .my-radio__inner {
+        height: $radio-border-small-input-height;
+        width: $radio-border-small-input-width;
+      }
+    }
+  }
+
+  @include m(mini) {
+    @include when(bordered) {
+      padding: $radio-border-mini-padding;
+      border-radius: #{$border-radius-base - 1};
+
+      .my-radio__label {
+        font-size: $button-mini-font-size;
+      }
+
+      .my-radio__inner {
+        height: $radio-border-mini-input-height;
+        width: $radio-border-mini-input-width;
+      }
+    }
+  }
+
+  @include e(input) {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle;
+
+    @include when(disabled) {
+      .my-radio__inner {
+        background-color: $radio-disabled-input-fill;
+        border-color: $radio-disabled-input-border-color;
+        cursor: not-allowed;
+
+        &::after {
+          cursor: not-allowed;
+          background-color: $radio-disabled-icon-color;
+        }
+
+        &+.my-radio__label {
+          cursor: not-allowed;
+        }
+      }
+
+      @include when(checked) {
+        .my-radio__inner {
+          background-color: $radio-disabled-input-fill;
+          border-color: $radio-disabled-input-border-color;
+          &::after {
+            background-color: $radio-disabled-checked-icon-color;
+          }
+        }
+
+        &+span.my-radio__label {
+          color: $color-text-placeholder;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    @include when(checked) {
+      .my-radio__inner {
+        border-color: $color-primary;
+        background-color: $color-primary;
+
+        &::after {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      & + .my-radio__label {
+        color: $color-primary;
+        font-weight: 700;
+      }
+    }
+  }
+
+  @include e(inner) {
+    border: $radio-input-border;
+    width: $radio-input-width;
+    height: $radio-input-height;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &::after {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: white;
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.2s ease-in;
+    }
+  }
+
+  @include e(original) {
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    z-index: -1;
+    margin: 0;
+  }
+
+  &:focus:not(.is-focus):not(:active):not(.is-disabled) { // tab获取焦点时
+    .my-radio__inner {
+      box-shadow: 0 0 2px 2px $color-primary;
+    }
+  }
+
+  @include e(label) {
+    font-size: $font-size-base;
+    padding-left: 5px;
+  }
+
+
+  @include e(ccccc){
+    font-size: 12px;
+  }
+}

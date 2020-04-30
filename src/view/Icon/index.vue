@@ -1,7 +1,7 @@
 <template>
   <div id="Icon" class="flex_row_center">
     <div class="flex_row" style="flex-wrap: wrap;width:1400px">
-      <div class="block flex_center flex_col" v-for="i in icons.reverse()" :key="i">
+      <div class="block flex_center flex_col" v-for="i in iconsR" :key="i">
         <i :class="i" />
         <div>{{i}}</div>
       </div>
@@ -296,6 +296,11 @@ export default {
         'my-icon-platform-eleme'
       ],
     };
+  },
+  computed: {
+    iconsR() {
+      return this.icons.reverse()
+    }
   },
   created() {},
   methods: {},

@@ -1,17 +1,46 @@
 @import 'config';
+@import 'function';
 
 /* BEM规范
  --------------------------------------------------------------------*/
 @mixin b($block) {
-  $B: $namespace + '-'+ $block;
+  $B: $namespace + '-'+ $block !global;
 
   .#{$B} {
     @content;
   }
 }
 
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: "";
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-link + $unit + ","};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  }
+  @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
+
 @mixin m($modifier) {
   $currentSelector: "";
+
   @each $unit in $modifier {
     $currentSelector: #{$currentSelector + & + $modifier-link + $unit + ","};
   }
@@ -22,10 +51,12 @@
     }
   }
 }
+
 /*-------------------------------------------------------------------*/
 
 @mixin when($state) {
   @at-root {
+
     // .cc.bb 同时拥有cc bb两个类名的元素
     &.#{$state-prefix + $state} {
       @content;

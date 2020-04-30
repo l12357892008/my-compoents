@@ -43,20 +43,16 @@
         // power.some(i => {
         //   return i.path === '/wu'
         // })  // true
-        let newRoute = [{
-            path: '/wu',
-            name: 'wu',
-            component: resolve => require(['@/view/wu/index'], resolve),
-          },
+        let newRoute = [
           {
-            path: '/hel',
-            name: 'hel',
-            component: resolve => require(['@/view/hel/index'], resolve),
+            path: '/magicBox',
+            name: 'magicBox',
+            component: resolve => require(['@/view/magicBox/index'], resolve),
           },
         ]
         this.$router.options.routes = this.$router.options.routes.concat(newRoute)
         await this.$router.addRoutes(newRoute);
-        console.log(this.$router.options.routes);
+        // console.log(this.$router.options.routes);
         this.cc = true
       },
       async getRouter() {  // 获取路由权限
@@ -72,7 +68,6 @@
         }
       },
     },
-
   }
 </script>
 
@@ -81,7 +76,7 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: skyblue;
+    background: rgb(245,245,245);
     height: 100%;
     display: flex;
     flex-direction: column;

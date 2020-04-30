@@ -10,6 +10,7 @@ import BaiduMap from 'vue-baidu-map'
 import 'element-ui/lib/theme-chalk/index.css'
 // import '@/element-theme.scss'  // elementui主题色修改
 import '@/assets/css/css.js'
+import bilibili from '@/utils/bilibili.js'
 
 console.log('main.js加载');
 
@@ -30,7 +31,11 @@ Vue.prototype.$get=get;
 //     }
 //     next()
 // })
-
+window.document.title = 'WDNMD'
+// console.log(window.document.getElementById('QW').href);
+// window.document.getElementById('QW').href = './tryitimg.gif';
+// console.log(window.document.getElementById('QW').href);
+bilibili()
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

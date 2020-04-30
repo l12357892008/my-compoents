@@ -23,4 +23,59 @@ $typeMap: (
   font-size: $link-font-size;
   font-weight: $link-font-weight;
 
+  & [class*='my-icon-'] {
+    & + span {
+      margin-left: 2px;
+    }
+  }
+
+  @include when(underline) {
+    &:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.5px;
+      top: 0;
+      border-bottom: 1px solid $link-default-active-color;
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+  }
+
+
+  &.my-link--default {
+    color: $link-default-font-color;
+    &:hover {
+      color: $link-default-active-color;
+    }
+    &::after {
+      border-color: $link-default-active-color;
+    }
+    @include when(disabled) {
+      color: $link-disabled-font-color;
+    }
+  }
+
+  @each $type,$primaryColor in $typeMap {
+    &.el-link--#{$type} {
+      color: $primaryColor;
+      &:hover {
+        color: mix($primaryColor,white,80%);
+      }
+      &::after {
+        border-color: $primaryColor;
+      }
+      @include when(disabled) {
+        color: mix($primaryColor, white, 50%);
+      }
+      @include when(underline) {
+        &:hover::after {
+          border-color: $primaryColor;
+        }
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ export default class formatPhone{
    **/
   static format(data){
     let phone = data.toString().trim();
+    if(data.length > 11){ return phone }  // 不是11位就滚呐
     return phone.substr(0, 3) + ' ' + phone.substr(3, 4) + ' ' + phone.substr(7, 4);
   }
 }

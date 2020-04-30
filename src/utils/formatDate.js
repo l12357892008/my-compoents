@@ -6,14 +6,16 @@ export default class formatDate{
     * @description 将Date对象,或非标准格式日期字符串转为标准日期String类型
    */
   static format(time){
-    // if(!(date instanceof Date)) return '';
-    var d = new Date(time),
-    month = '' + (d.getMonth() + 1),
-    day = '' + d.getDate(),
-    year = d.getFullYear(),
-    hours = d.getHours()+'',
-    seconds = d.getSeconds() + '',
-    minutes = d.getMinutes()+'';
+    let d = new Date(time);
+    if(!(d instanceof Date) || isNaN(d.getTime())) {
+      return time;
+    }
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    let year = d.getFullYear();
+    let hours = d.getHours()+'';
+    let seconds = d.getSeconds() + '';
+    let minutes = d.getMinutes()+'';
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;

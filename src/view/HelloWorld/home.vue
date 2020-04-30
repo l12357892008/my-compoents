@@ -1,96 +1,74 @@
 <template>
-  <div id="hello">
-    <img class="cc" src="@/assets/logo.png" style="margin-top: 60px;"><br />
-    <div class="titleIcon flex_center" style="margin-left: 200px;">
-      <div class="titleIcon2 flex_center">
-        <img class="image" src="./img/group.png" />
-      </div>
+  <div id="hello" class="flex_row_center">
+    <div class="block flex_center" v-for="item in pages" :key='item.src' @click='go(item.src)'>
+      <div>{{item.name}}</div>
     </div>
-    <el-button class="hover_big" type='text' size='mini' @click='cc'>确定</el-button>
-    <Input title='手机号11' :Data='{form:form,name:"ii"}' :titleWidth='title_width' type='tel' style='width: 600px' />
-    <el-button-group>
-      <el-button type='text' round>sdaf</el-button>
-      <el-button type='primary' round>sdaf</el-button>
-      <el-button type='primary' round>sdaf</el-button>
-    </el-button-group>
-    <Button @click="handleClick">dsaf</Button>
   </div>
 </template>
 
 <script>
-  import Input from '~/Input/index.vue'
+  import { Button } from '@/common/index.js'
+  import formatDate from '@/utils/formatDate.js'
+  import formatMoney from '@/utils/formatMoney.js'
   export default {
     name: 'HelloWorld',
     data() {
       return {
-        title_width: '150px',
-        autoCheck: true,
-        form: {}
+        pages: [
+          {
+            src: '/magicBox',
+            name: '旋转魔方'
+          },
+          {
+            src: '/login',
+            name: '登录界面'
+          },
+          {
+            src: '/asdfsd',
+            name: '404界面'
+          },
+          {
+            src: '/digitalRain',
+            name: '数字雨'
+          },
+          {
+            src: '/demo',
+            name: '练习用',
+          },
+          {
+            src: '/icon',
+            name: '图标一览'
+          }
+        ]
       }
     },
     created() {
+      // console.log(formatDate.format('2'));
+      console.log(formatMoney.format());
     },
     methods: {
-      cc() {
-        this.$store.dispatch('setAutoCheck', !this.$store.state.autoCheck)
-      },
-      handleClick(e){
-        alert(e.clientX)
+      go(src){
+        this.$router.push(src);
       }
     },
-    components: { Input }
+    components: { Button }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   #hello {
-    /*总体字体大小*/
-    font-size: 14px;
-    background: yellow;
-    flex: 1;
+    flex-wrap: wrap;
+    align-content: flex-start;
   }
-
-  h1,
-  h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
-
-  .cc {
-    transform: rotate(45deg);
-  }
-
-  .titleIcon {
-    width: 130px;
-    height: 130px;
-    background: white;
-    transform: rotate(45deg);
-
-    .titleIcon2 {
-      width: 110px;
-      height: 110px;
-      border: 1px solid #F36;
-
-      .image {
-        color: #F36;
-        width: 60px;
-        height: 60px;
-        transform: rotate(-45deg);
-      }
+  .block{
+    width: 150px;
+    height: 150px;
+    background: pink;
+    flex: none;
+    &:hover {
+      background: skyblue;
+      color: violet;
     }
   }
 </style>

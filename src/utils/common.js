@@ -1,14 +1,14 @@
 /* 公共参数获取*/
 
-const baseUrl = {
-  get url(){  // 域名
+const baseData = {
+  get domain(){  // 域名
     return 'http://' + localStorage.getItem('baseUrl')
   },
-  get user(){ // token
+  get token(){ // token
     return localStorage.getItem('user')
   }
 }
 
-export{
+export default{
   baseUrl
 }

@@ -84,8 +84,8 @@ li {
 
 /*滚动条样式*/
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
 }
 ::-webkit-scrollbar-track-piece {
     background-color: rgba(0, 0, 0, 0.2);

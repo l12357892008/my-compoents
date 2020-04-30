@@ -13,8 +13,8 @@
       </div>
       <div ref='cc' class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
       <div class="flex_col wrapper" style="align-items: center;">
-          <Input :Data='{form:form,name:"name"}' placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;'/>
-          <Input :Data='{form:form,name:"password"}' placeholder='密码' type='password' style='width: 80%'/>
+          <input placeholder='用户名' type='user' style='width: 80%;margin: 30px 0;'/>
+          <input placeholder='密码' type='password' style='width: 80%'/>
           <el-button class="submit" @click='login' :style="{backgroundColor:color,width:'80%'}">LOGIN</el-button>
       </div>
     </div>
@@ -22,7 +22,6 @@
 </template>
 
 <script>
-  import Input from '~/Input/index'
   export default {
     data() {
       return {
@@ -47,7 +46,7 @@
         }
       }
     },
-    components:{Input}
+    components:{}
   }
 </script>
 

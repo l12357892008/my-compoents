@@ -13,25 +13,29 @@ const routes = [{
     component: () => import('@/common/pages/Error')
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/common/pages/Login')
+  },
+  {
     path: '/index',
     name: 'HelloWorld',
     component: () => import('@/view/HelloWorld/home')
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/view/login/home')
-  },
-  {
     path: '/demo',
     name: 'demo',
     component: () => import('@/view/demo/home')
-  }
-  ,
+  },
   {
     path: '/icon',
     name: 'Icon',
     component: () => import('@/view/Icon')
+  },
+  {
+    path: '/digitalRain',
+    name: 'DigitalRain',
+    component: () => import('@/view/DigitalRain')
   },
   {
     path: '*',

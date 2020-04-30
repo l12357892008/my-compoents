@@ -82,7 +82,7 @@
   }
 
   // a[class*='abs'] 选择class属性中包含abs的a元素 , #demo[class*='abs'],选择class属性以abs开头的id为demo的元素
-  & [class*='el-icon-'] {
+  & [class*='my-icon-'] {
     &+span {
       margin-left: 0px;
     }

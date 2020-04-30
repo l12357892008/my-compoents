@@ -24,7 +24,8 @@ $color-info-lighter: mix(white, $color-info, 90%) !default;
 $color-primary-dark: mix(#000000, $color-primary, 10%) !default; // ecf5ff 
 
 $color-text-placeholder: #C0C4CC !default; // placeholder
-$color-text-regular: #606266 !default; // 正常黑色字体颜色
+$color-text-regular: #606266 !default; // 正常字体颜色
+$background-color-base: #F5F7FA !default;
 
 /* Font
 -------------------------------------------------*/
@@ -106,3 +107,26 @@ $link-font-weight: $font-weight-primary !default;
 $link-default-font-color: $color-text-regular !default;
 $link-default-active-color: $color-primary !default;
 $link-disabled-font-color: $color-text-placeholder !default;
+
+/* Radio
+ ------------------------------------------------*/
+$radio-font-weight: $font-weight-primary !default;
+$radio-font-color: $color-text-regular !default;
+
+$radio-input-border: $border-default !default;
+
+$radio-border-padding: 12px 20px !default;
+$radio-border-small-padding: 8px 16px!default;
+$radio-border-mini-padding: 6px 14px!default;
+$radio-input-height: 14px !default;
+$radio-input-width: 14px !default;
+$radio-border-small-input-height: 13px !default;
+$radio-border-small-input-width: 13px !default;
+$radio-border-mini-input-height: 12px !default;
+$radio-border-mini-input-width: 12px !default;
+
+$radio-disabled-input-fill: $background-color-base !default;
+$radio-disabled-icon-color: $background-color-base !default;
+$radio-disabled-input-border-color: $border-color-light !default;
+
+$radio-disabled-checked-icon-color: $color-text-placeholder !default;
