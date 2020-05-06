@@ -5,8 +5,9 @@
       border && radioSize ? 'my-radio--' + radioSize : '',
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
-      { 'is-bordered': border },
-      { 'is-checked': model === label }
+      { 'is-bordered': border || button },
+      { 'is-checked': model === label },
+      { 'is-button': button }
     ]"
     :tabindex="tabIndex"
     @keydown.space.stop.prevent="model = isDisabled ? model : label"
@@ -18,7 +19,7 @@
         'is-checked': model === label
       }"
     >
-      <span class="my-radio__inner"></span>
+      <span class="my-radio__inner" v-if="!button"></span>
       <input
         ref="radio"
         class="my-radio__original"
@@ -58,7 +59,8 @@ export default {
     disabled: Boolean,
     name: String,
     border: Boolean,
-    size: String
+    size: String,
+    button: Boolean
   },
   data() {
     return {
@@ -89,7 +91,6 @@ export default {
       // 当model值发生变化时调用通过$emit的input事件来更新父组件的值，只有点击该项单选按钮时才会调用
       // 父组件传来的值变化不会调用该函数
       set(val) {
-        console.log('我裂开了');
         if (this.isGroup) {
           this.dispatch("MyRadioGroup", "input", [val]);  // mixins混入方法,将$emit放到MyRadioGroup组件中执行
         } else {

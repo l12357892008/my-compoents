@@ -35,7 +35,6 @@
     props: {
     },
     mounted() {
-      console.log(this.$refs.cc);
     },
     methods: {
       login() {  // 点击登录按钮向父组件传递账号密码

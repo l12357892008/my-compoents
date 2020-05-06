@@ -23,14 +23,14 @@
       <el-link>中文asf</el-link>
     </div>
     <div class="radio" style="margin-left:10px">
-      <Radio v-model="radioValue" label="1" border disabled></Radio>
-      <Radio v-model="radioValue" label="2" border size='small'></Radio>
+      <Radio v-model="radioValue" label="1" border disabled button></Radio>
+      <Radio v-model="radioValue" label="2" border size='small' button>ww</Radio>
       <label>
         <input id="jj" type="radio" value="2" v-model="radioValue" />
         sdafasdf
       </label>
-      <el-radio v-model="radioValue" label="3" border disabled size="mini"></el-radio>
-      <el-radio v-model="radioValue" label="4" border></el-radio>
+      <el-radio v-model="radioValue" label="3" border disabled  size="mini"></el-radio>
+      <el-radio v-model="radioValue" label="4" border ></el-radio>
       <el-radio v-model="radioValue" label="1" disabled border></el-radio>
     </div>
   </div>

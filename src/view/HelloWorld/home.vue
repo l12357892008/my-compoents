@@ -16,6 +16,14 @@
       return {
         pages: [
           {
+            src: '/demo',
+            name: '练习用',
+          },
+          {
+            src: '/icon',
+            name: '图标一览'
+          },
+          {
             src: '/magicBox',
             name: '旋转魔方'
           },
@@ -30,21 +38,35 @@
           {
             src: '/digitalRain',
             name: '数字雨'
-          },
-          {
-            src: '/demo',
-            name: '练习用',
-          },
-          {
-            src: '/icon',
-            name: '图标一览'
           }
         ]
       }
     },
-    created() {
+    mounted() {
       // console.log(formatDate.format('2'));
-      console.log(formatMoney.format());
+      // console.log(formatMoney.format());
+
+      // function a(){
+      //   this.name = 'adfasdf'
+      // }
+      // let b = new a();
+      // console.log(a.prototype,b);
+
+      // function getLongestPath(root){   // 遍历树找最长结点
+      //     if(!root) return [];
+      //     var tempList = [];
+      //     for(var i=0;i<root.children.length;i++){
+      //     	var ret = getLongestPath(root.children[i]);
+      //     	if(ret.length>tempList.length){
+      //     	    tempList = ret.slice();
+      //     	}
+      //     }
+      //     tempList.push(root.nodeName.toLowerCase());
+      //     return tempList
+      // }
+      // console.log(window.document.getElementsByTagName('body')[0]);
+      // let a = getLongestPath(window.document.getElementsByTagName('body')[0])
+      // console.log(a);
     },
     methods: {
       go(src){

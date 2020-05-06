@@ -36,6 +36,8 @@ window.document.title = 'WDNMD'
 // window.document.getElementById('QW').href = './tryitimg.gif';
 // console.log(window.document.getElementById('QW').href);
 bilibili()
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

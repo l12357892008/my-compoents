@@ -76,6 +76,10 @@
     vertical-align: middle;
 
     @include when(disabled) {
+      &+span.my-radio__label {
+        color: $color-text-placeholder;
+        cursor: not-allowed;
+      }
       .my-radio__inner {
         background-color: $radio-disabled-input-fill;
         border-color: $radio-disabled-input-border-color;
@@ -91,6 +95,8 @@
         }
       }
 
+      
+
       @include when(checked) {
         .my-radio__inner {
           background-color: $radio-disabled-input-fill;
@@ -98,11 +104,6 @@
           &::after {
             background-color: $radio-disabled-checked-icon-color;
           }
-        }
-
-        &+span.my-radio__label {
-          color: $color-text-placeholder;
-          cursor: not-allowed;
         }
       }
     }
@@ -170,9 +171,19 @@
     font-size: $font-size-base;
     padding-left: 5px;
   }
-
-
-  @include e(ccccc){
-    font-size: 12px;
+   
+  @include when(button) {
+    @include e(label) {
+      padding: 0;
+    }
+    @include when(checked) {
+      background-color: $color-primary;
+      @include e(label){
+        color: white;
+      }
+    }
+    @include when(disabled) {
+      background-color: $radio-disabled-input-fill;
+    }
   }
 }

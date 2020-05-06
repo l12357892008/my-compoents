@@ -1,6 +1,6 @@
 <template>
-  <div id="Icon" class="flex_row_center">
-    <div class="flex_row" style="flex-wrap: wrap;width:1400px">
+  <div id="Icon" ref='ddd' class="flex_row_center">
+    <div class="flex_row" style="flex-wrap: wrap;width:1400px;">
       <div class="block flex_center flex_col" v-for="i in iconsR" :key="i">
         <i :class="i" />
         <div>{{i}}</div>
@@ -300,9 +300,13 @@ export default {
   computed: {
     iconsR() {
       return this.icons.reverse()
-    }
+    },
   },
-  created() {},
+  mounted() {
+      let b = this.$refs.ddd
+      // console.log(b.scrollHeight);
+      b.scrollTo(0,b.scrollHeight)
+  },
   methods: {},
   components: {}
 };
@@ -314,6 +318,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  overflow-y: auto;
 }
 .block {
   width: 200px;
