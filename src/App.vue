@@ -8,7 +8,7 @@
 
 <script>
   import WebSocketClass from '@/utils/webSocket.js'
-  import formatDate from '@/utils/formatDate.js'
+  import format from '@/utils/format.js'
   export default {
     name: 'App',
     provide() {

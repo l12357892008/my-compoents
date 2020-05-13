@@ -33,6 +33,5 @@ export default function bilibili() {
     '    ##MMMMMMMMMMMMMMMMMMMMMM##                        bilibili - ( ゜- ゜)つロロ 乾杯~ .                   ',
     '         \/            \/                                                                                 ',
   ]
-
   console.info(e + bb.join('\n'),n);
 }

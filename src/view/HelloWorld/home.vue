@@ -8,8 +8,7 @@
 
 <script>
   import { Button } from '@/common/index.js'
-  import formatDate from '@/utils/formatDate.js'
-  import formatMoney from '@/utils/formatMoney.js'
+  import format from '@/utils/format.js'
   export default {
     name: 'HelloWorld',
     data() {
@@ -38,6 +37,9 @@
           {
             src: '/digitalRain',
             name: '数字雨'
+          },{
+            src: '/gallery3D',
+            name: '3D画廊'
           }
         ]
       }

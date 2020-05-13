@@ -6,9 +6,14 @@
 <template>
   <div id="Login" class="flex_center">
     <div class="flex_col_center" style="width: 100%;align-items: center;">
-      <div class="titleIcon flex_center" style="margin-top: -100px;">
-        <div class="titleIcon2 flex_center">
-          <img class="image" src="./img/group.png" />
+      <div class='IconRotate'>
+        <div class="titleIcon flex_center" style="margin-top: -100px;">
+          <div class="titleIcon2 flex_center">
+            <img class="image" src="./img/group.png" />
+          </div>
+          <div class="titleIcon2 flex_center backImage">
+            <div class='backfont'>我是背面</div>
+          </div>
         </div>
       </div>
       <div ref='cc' class="BigTitle" style="margin-top: 60px;margin-bottom: 30px;">用户登录</div>
@@ -50,6 +55,37 @@
 </script>
 
 <style lang="scss" scoped>
+  @keyframes ff{
+    from{
+      transform: rotateY(0);
+    }
+    to{
+      transform: rotateY(360deg);
+    }
+  }
+  @keyframes gg{
+    0%{
+      z-index: -1;
+    }
+    25%{
+      z-index: -1;
+    }
+    25.1%{
+      z-index: 1;
+    }
+    75%{
+      z-index: 1;
+    }
+    75.1%{
+      z-index: -1;
+    }
+    100%{
+      z-index: -1;
+    }
+  }
+  .IconRotate{
+    animation: ff 10s linear infinite;
+  }
   #Login{
     background-image: url(./img/background.jpg);
     background-repeat:no-repeat;
@@ -66,17 +102,27 @@
       width: 130px;
       height: 130px;
       background: white;
-      transform: rotate(45deg);
+      transform: rotateZ(45deg);
+      position: relative;
       .titleIcon2{
         width: 110px;
         height: 110px;
         border: 1px solid #F36;
+        background-color: white;
 
         .image{
           color: #F36;
           width: 60px;
           height: 60px;
           transform: rotate(-45deg);
+        }
+      }
+      .backImage{
+        position: absolute;
+        z-index: -1;
+        animation: gg 10s linear infinite;
+        .backfont{
+          transform: rotateZ(-45deg) rotateY(180deg);
         }
       }
     }

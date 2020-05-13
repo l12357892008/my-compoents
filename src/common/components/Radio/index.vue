@@ -1,3 +1,18 @@
+<!--
+  describe:
+  1.引入: import {当前组件名称} from '@/common/components/AAIndex'
+  2.接受属性:
+    必填项: 无
+    可选项:
+      1.v-model: 绑定的单选值
+      2.name: String,input元素原生name属性
+      3.disabled: Boolean,是否禁用按钮
+      4.border: Boolean,是否带边框
+      5.size: String,大小，ex:small/mini
+      5.button: Boolean,是否为按钮型
+  3.方法:
+    @change   携带参数:值改变事件
+-->
 <template>
   <label
     class="my-radio"

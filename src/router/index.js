@@ -38,6 +38,11 @@ const routes = [{
     component: () => import('@/view/DigitalRain')
   },
   {
+    path: '/gallery3D',
+    name: 'gallery3D',
+    component: () => import('@/view/gallery3D')
+  },
+  {
     path: '*',
     redirect: '/404'
   }

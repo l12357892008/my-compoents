@@ -8,7 +8,7 @@ export default class WebSocketClass{
     this.wsUrl = url
     this.lockReconnect = false   // 避免重复连接
     this.tt = null
-    this.createWebSocket()
+    // this.createWebSocket()
   }
 
   createWebSocket() {  // 创建WebSocket连接
