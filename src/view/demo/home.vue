@@ -1,58 +1,94 @@
 <template>
   <div id="demo" style="background: white;">
+    防抖节流:<br />
     <div class="button">
-      <Button class type="success" size="mini" icon="my-icon-arrow-left" @click="debounce">防抖</Button>
-      <i class="my-icon-arrow-left" />
-      <Radio v-model="radioValue" size="mini" label="1" border></Radio>
-      <el-button type="peimary" icon="my-icon-arrow-left" size="mini" @click="throttle">节流</el-button>
+      <Button class type="success" size="mini" icon="my-icon-arrow-left" @click="debounce">
+        防抖
+        <i class="my-icon-arrow-right" />
+      </Button>
+      <el-button type="peimary" icon="my-icon-arrow-left" size="mini" @click="throttle">
+        节流
+        <i class="my-icon-arrow-right" />
+      </el-button>
     </div>
+    <br />Button:<br />
+    <div class="button">
+      <Button type="primary" size="mini" round>我</Button>
+      <Button type="danger" size="smaller">我</Button>
+      <Button>我</Button>
+      <Button circle size="mini">我</Button>
+      <br />
+      <el-button type="primary" size="mini" round>我</el-button>
+      <el-button type="danger" size="small">我</el-button>
+      <el-button>我</el-button>
+      <el-button circle size="mini">我</el-button>
+    </div>
+    <br />ButtonGroup:<br />
     <div class="buttonGroup">
-      <ButtonGroup style="margin:20px">
-        <Button type="primary">我</Button>
-        <Button type="primary">我</Button>
+      <ButtonGroup>
+        <Button type="primary" round>我</Button>
+        <Button type="danger">我</Button>
         <Button>我</Button>
+        <Button type="success">我</Button>
       </ButtonGroup>
-      <el-button-group round>
-        <el-button round>我</el-button>
+      <el-button-group>
+        <el-button type="primary" round>我</el-button>
         <el-button type="danger">我</el-button>
-        <el-button type="danger">我</el-button>
+        <el-button>我</el-button>
+        <el-button type="success">我</el-button>
       </el-button-group>
     </div>
+    <br />link:<br />
     <div class="A">
       <A icon="my-icon-arrow-left">中文sdf</A>
       <el-link>中文asf</el-link>
     </div>
+    <br />radio:<br />
     <div class="radio" style="margin-left:10px">
-      <Radio v-model="radioValue" label="1" border disabled button></Radio>
-      <RadioGroup v-model="radioValue">
-        <Radio label="2" border size="small" button>ww</Radio>
-        <Radio label="3" border size="small" button>ww</Radio>
-      </RadioGroup>
+      <Radio v-model="radioValue" label="1"></Radio>
+      <Radio v-model="radioValue" label="2" border size='mini'>我是2</Radio>
+      <Radio v-model="radioValue" label="3" button></Radio>
+      <Radio v-model="radioValue" label="3" button disabled></Radio>
+      <Radio v-model="radioValue" label="3" border disabled></Radio>
+      <br/>
+      <el-radio v-model="radioValue" label="1"></el-radio>
+      <el-radio v-model="radioValue" label="2" border size="mini">我是2</el-radio>
+      <el-radio v-model="radioValue" label="1" disabled border></el-radio>
+      <br/>
+      原生写法:
       <label>
         <input id="jj" type="radio" value="2" v-model="radioValue" />
         sdafasdf
       </label>
-      <el-radio-group v-model="radioValue">
-        <el-radio-button label="3"></el-radio-button>
-        <el-radio-button label="4"></el-radio-button>
-      </el-radio-group>
-      <el-radio v-model="radioValue" label="1" disabled border></el-radio>
+    </div>
+    <br/>RadioGroup:<br/>
+    <div style="margin-left:10px">
+    <RadioGroup size="mini" v-model="radioValue">
+      <Radio label="1" button>ww</Radio>
+      <Radio label="2" button>ww</Radio>
+      <Radio label="3" button>ww</Radio>
+    </RadioGroup><br/><br/>
+    <el-radio-group v-model="radioValue">
+      <el-radio-button label="1"></el-radio-button>
+      <el-radio-button label="2"></el-radio-button>
+      <el-radio-button label="3"></el-radio-button>
+    </el-radio-group>
     </div>
   </div>
 </template>
 
 <script>
 import { Button, ButtonGroup, A, Radio, RadioGroup } from "@/common/index.js";
-import {_debounce,_throttle} from "@/utils/de-tro";
+import { _debounce, _throttle } from "@/utils/de-tro";
 export default {
   name: "ffu",
   componentName: "fu",
   cc: "asdf",
   data() {
     return {
-      cell: [1,2,3,4,5],
+      cell: [1, 2, 3, 4, 5],
       cc: true, // b   dasfas
-      radioValue: "1",
+      radioValue: "4",
       dd: "<div>sb</div>",
       asd: {
         dsa: {
@@ -62,20 +98,22 @@ export default {
     };
   },
   props: {},
-  mounted() {
-  },
+  mounted() {},
   watch: {},
   methods: {
-    debounce:_debounce(() => {
-      console.log('qer');
-    },1000),
-    throttle:_throttle(() => {
-      console.log('asd');
-    },1000),
+    debounce: _debounce(() => {
+      console.log("qer");
+    }, 1000),
+    throttle: _throttle(() => {
+      console.log("asd");
+    }, 1000)
   },
   components: { Button, ButtonGroup, A, Radio, RadioGroup }
 };
 </script>
 
 <style lang="scss" scoped>
+#demo {
+  font-size: 14px;
+}
 </style>

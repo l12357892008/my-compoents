@@ -8,7 +8,6 @@ import {post,get} from '@/utils/http'   // axois封装
 import ElementUI from 'element-ui'
 import BaiduMap from 'vue-baidu-map'
 import 'element-ui/lib/theme-chalk/index.css'
-// import '@/element-theme.scss'  // elementui主题色修改
 import '@/assets/css/css.js'
 import bilibili from '@/utils/bilibili.js'
 import Vant from 'vant';
@@ -28,16 +27,16 @@ Vue.use(BaiduMap, {
 Vue.prototype.$post=post;  // use way: this.$post(url,data).then(res => {})
 Vue.prototype.$get=get;
 
-// router.beforeEach((to, from, next) => {
+// router.beforeEach((to, from, next) => {  // 根据路由来动态配置标签标题
 //     console.log(to);
 //     if (to.meta.title) {
 //         document.title = to.meta.title
 //     }
 //     next()
 // })
-window.document.title = 'WDNMD'
+window.document.title = 'WDNMD'  // 动态修改标签标题
 // console.log(window.document.getElementById('QW').href);
-// window.document.getElementById('QW').href = './tryitimg.gif';
+// window.document.getElementById('QW').href = './tryitimg.gif';  // 动态修改图标，文件最好放static里
 // console.log(window.document.getElementById('QW').href);
 bilibili()
 

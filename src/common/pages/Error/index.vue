@@ -1,3 +1,12 @@
+<!--
+  describe:
+  直接在路由中添加路径指向该文件
+  {
+    path: '/404',
+    name: 'Error',
+    component: () => import('@/common/pages/Error')
+  }
+-->
 <template>
   <div id="Error" class="flex">
     <div class="head404"></div>

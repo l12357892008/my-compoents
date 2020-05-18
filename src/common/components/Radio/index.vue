@@ -17,7 +17,7 @@
   <label
     class="my-radio"
     :class="[
-      border && radioSize ? 'my-radio--' + radioSize : '',
+      bordered && radioSize ? 'my-radio--' + radioSize : '',
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
       { 'is-bordered': border || button },
@@ -71,15 +71,15 @@ export default {
   props: {
     value: {},
     label: {},
-    disabled: Boolean,
-    name: String,
-    border: Boolean,
-    size: String,
-    button: Boolean
+    disabled: Boolean, // 是否禁用
+    name: String,  // 原生name属性
+    border: Boolean,  // 是否带边框
+    size: String,  // 尺寸
+    button: Boolean // 是否按钮形态
   },
   data() {
     return {
-      focus: false
+      focus: false  // 是否获取焦点
     };
   },
   computed: {
@@ -98,6 +98,9 @@ export default {
       }
       // 遍历结束后都没有RadioGrop就直接返回false,绑定值由Radio组件自己完成
       return false;
+    },
+    bordered() {
+      return this.border || this.button
     },
     model: {  // 单选框的唯一标识值
       get() {  // get当使用model时调用，根据有无使用RadioGroup返回RadioGroup绑定的值或自身绑定的值
@@ -126,14 +129,14 @@ export default {
         ? this._radioGroup.disabled || this.disabled || (this.myForm || {}).disabled
         : this.disabled || (this.myForm || {}).disabled;
     },
-    tabIndex() {
+    tabIndex() {  // 按tab键时是否切换到该元素
       return this.isDisabled || (this.isGroup && this.model !== this.label)
         ? -1
         : 0;
     }
   },
   methods: {
-    handleChange() {
+    handleChange() {  // 
       this.$nextTick(() => { // DOM更新完成后才执行，这样才能拿到最新的数据
         this.$emit("change", this.model);
         this.isGroup && this.dispatch("MyRadioGroup", "handleChange", this.model);

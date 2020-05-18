@@ -56,12 +56,17 @@ $button-padding-horizontal: 20px !default;
 $button-big-font-size: #{$font-size-base + 1} !default;
 $button-big-border-radius: #{$border-radius-base + 1} !default;
 $button-big-padding-vertical: 14px !default;
-$button-big-padding-horizontal: 24px !default;
+$button-big-padding-horizontal: 22px !default;
 
-$button-small-font-size: #{$font-size-base - 1} !default;
+$button-small-font-size: $font-size-base !default;
 $button-small-border-radius: $border-radius-base !default;
-$button-small-padding-vertical: 9px !default;
-$button-small-padding-horizontal: 18px !default;
+$button-small-padding-vertical: 10px !default;
+$button-small-padding-horizontal: 20px !default;
+
+$button-smaller-font-size: #{$font-size-base - 2} !default;
+$button-smaller-border-radius: #{$border-radius-base - 1} !default;
+$button-smaller-padding-vertical: 9px !default;
+$button-smaller-padding-horizontal: 15px !default;
 
 $button-mini-font-size: #{$font-size-base - 2} !default;
 $button-mini-border-radius: #{$border-radius-base - 1} !default;
@@ -115,13 +120,23 @@ $radio-font-color: $color-text-regular !default;
 
 $radio-input-border: $border-default !default;
 
-$radio-border-padding: 12px 20px !default;
-$radio-border-small-padding: 8px 16px!default;
-$radio-border-mini-padding: 6px 14px!default;
+$radio-border-padding: 12px 10px!default;
 $radio-input-height: 14px !default;
 $radio-input-width: 14px !default;
+
+$radio-border-big-padding: 14px 12px!default;
+$radio-border-big-input-height: 15px !default;
+$radio-border-big-input-width: 15px !default;
+
+$radio-border-small-padding: 8px 10px!default;
 $radio-border-small-input-height: 13px !default;
 $radio-border-small-input-width: 13px !default;
+
+$radio-border-smaller-padding: 8px 8px!default;
+$radio-border-smaller-input-height: 13px !default;
+$radio-border-smaller-input-width: 13px !default;
+
+$radio-border-mini-padding: 6px 6px!default;
 $radio-border-mini-input-height: 12px !default;
 $radio-border-mini-input-width: 12px !default;
 

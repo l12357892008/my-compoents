@@ -68,13 +68,29 @@ export default {
     circle: Boolean, // 是否圆形按钮
   },
   computed: {
+    // 判断有没有被ButtonGroup包裹住
+    isGroup() {
+      let parent = this.$parent
+      while(parent){
+        if(parent.$options.name !== 'MyButtonGroup') {
+          parent = parent.$parent
+        }else{
+          this._buttonGroup = parent
+          return true
+        }
+      }
+      return false
+    },
     /* 根据父组件传的disabled和两层封装Form中传来的myForm判断是否需要禁用按钮 */
     buttonDisabled() {
       return this.disabled || this.loading || this.myForm.disabled;
     },
     /* 根据父组件和两层封装Form中传来的myForm计算按钮尺寸 */
     buttonSize() {
-      return this.size || this.myForm.myFormItemSize
+      const temButtonSize = this.size || this.myForm.myFormItemSize
+      return this.isGroup 
+        ? temButtonSize || this._buttonGroup.buttonGroupSize 
+        : temButtonSize;
     }
   },
   methods: {

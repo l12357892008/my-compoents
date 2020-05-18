@@ -144,6 +144,9 @@
     @include when(circle) {
       padding: $button-big-padding-vertical;
     }
+    @include when(round) {
+      padding: $button-big-padding-vertical $button-big-padding-horizontal;
+    }
   }
 
   @include m(small) {
@@ -152,6 +155,20 @@
     @include when(circle) {
       padding: $button-small-padding-vertical;
     }
+    @include when(round) {
+      padding: $button-small-padding-vertical $button-small-padding-horizontal;
+    }
+  }
+
+  @include m(smaller) {
+    @include button-size($button-smaller-padding-vertical, $button-smaller-padding-horizontal, $button-smaller-font-size, $button-smaller-border-radius);
+
+    @include when(circle) {
+      padding: $button-smaller-padding-vertical;
+    }
+    @include when(round) {
+      padding: $button-smaller-padding-vertical $button-smaller-padding-horizontal;
+    }
   }
 
   @include m(mini) {
@@ -159,6 +176,10 @@
 
     @include when(circle) {
       padding: $button-mini-padding-vertical;
+    }
+
+    @include when(round) {
+      padding: $button-mini-padding-vertical $button-mini-padding-horizontal;
     }
   }
 }

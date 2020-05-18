@@ -12,6 +12,7 @@
   display: inline-block;
   white-space: nowrap;
   outline: none;
+  margin-right: 30px;
   @include utils-user-select(none); // 不允许选中文本
 
   @include when(bordered) {
@@ -30,7 +31,23 @@
     }
 
     &+.my-radio.is-bordered {
-      margin-left: 30px;
+      margin-left: 10px;
+    }
+  }
+
+  @include m(big) {
+    @include when(bordered) {
+      padding: $radio-border-big-padding;
+      border-radius: $border-radius-base;
+
+      .my-radio__label {
+        font-size: $button-big-font-size;
+      }
+
+      .my-radio__inner {
+        height: $radio-border-big-input-height;
+        width: $radio-border-big-input-width;
+      }
     }
   }
 
@@ -46,6 +63,22 @@
       .my-radio__inner {
         height: $radio-border-small-input-height;
         width: $radio-border-small-input-width;
+      }
+    }
+  }
+
+  @include m(smaller) {
+    @include when(bordered) {
+      padding: $radio-border-smaller-padding;
+      border-radius: $border-radius-base;
+
+      .my-radio__label {
+        font-size: $button-smaller-font-size;
+      }
+
+      .my-radio__inner {
+        height: $radio-border-smaller-input-height;
+        width: $radio-border-smaller-input-width;
       }
     }
   }
@@ -122,7 +155,6 @@
 
       &+.my-radio__label {
         color: $color-primary;
-        font-weight: 700;
       }
     }
   }
@@ -191,6 +223,7 @@
 
       @include e(label) {
         color: white;
+        font-weight: 400;
       }
     }
 
