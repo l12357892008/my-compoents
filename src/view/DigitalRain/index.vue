@@ -1,5 +1,5 @@
 <template>
-  <div class="flex_center">
+  <div id="DigitalRain" class="flex_center">
     <DigitalRain :Width="Width" :Height='Height' :speedA='2'></DigitalRain>
   </div>
 </template>

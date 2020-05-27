@@ -64,8 +64,6 @@
 }
 
 .flex_center {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,10 +75,11 @@
 }
 
 .hover_big { /*鼠标悬浮放大*/
-  transition: all .4s;
+  transition: transform .4s;
 }
 .hover_big:hover {
   transform: scale(1.2);
+  z-index: 1;
 }
 
 .flutter { /*左右抖动*/

@@ -23,7 +23,8 @@
         canvas: null,
         columns: 0,
         rainDropPositionArray: [],
-        speedCnt: 0
+        speedCnt: 0,
+        requestID: null,  // window.requestAnimationFrame返回的id，销毁时需要
       }
     },
     props: {
@@ -71,14 +72,16 @@
       this.initRainDrop();
       this.animationUpdate();
     },
+    beforeDestroy(){
+      window.cancelAnimationFrame(this.requestID);  // 必须销毁，否则跳转其他页面循环依旧在继续
+    },
     methods: {
       initRAF() {
         /* requestAnimationFrame专门用于重绘实现动画
-           与setTimeout类似，大概每秒重绘60次(60帧)
-           但性能比setTimeout好的多，接受一个回调函数，即每次
-           冲回前都会调用。
+           与setTimeout类似，但性能比setTimeout好的多，
+           接受一个回调函数，大概15m后会调用。
          */
-        window.requestAnimationFrame = (function() { // 固定写法，复制粘贴就行了
+        window.requestAnimationFrame = (function() { // 适配不同浏览器固定写法，复制粘贴就行了
           return window.requestAnimationFrame ||
             window.webkitRequestAnimationFrame ||
             window.mozRequestAnimationFrame ||
@@ -87,7 +90,7 @@
               window.setTimeout(callback, 1000 / 60);
             };
         })();
-        window.cancelAnimationFrame = (function() { // 固定写法，复制粘贴就行了
+        window.cancelAnimationFrame = (function() { // 适配不同浏览器固定写法，复制粘贴就行了
           return window.cancelAnimationFrame ||
             window.webkitCancelAnimationFrame ||
             window.mozCancelAnimationFrame ||
@@ -117,6 +120,7 @@
         }
       },
       animationUpdate() {
+        // console.log('1');
         this.speedCnt++;
         //speed为1最快，越大越慢
         if (this.speedCnt === this.speed) { // speedCnt 累加,等于speed时重置为0并进行一次重绘
@@ -151,7 +155,7 @@
             }
           }
         }
-        window.requestAnimationFrame(this.animationUpdate); // 类似于setInterval,大概一秒运行60-75次
+        this.requestID = window.requestAnimationFrame(this.animationUpdate); // 类似于setInterval,大概一秒运行60-75次
       }
     }
   }

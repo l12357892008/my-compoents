@@ -55,6 +55,9 @@ export default {
       return (this.double * 350)
     }
   },
+  beforeDestroy(){
+    document.onmouseup = null  // 必须销毁，不然跳转页面(但页面跳转)函数依旧会执行
+  },
   methods: {
     init() {
       const box = this.$refs.box;
@@ -73,14 +76,16 @@ export default {
     },
     /* 鼠标按下后事件处理 */
     down(e) {
+      // console.log('mouseLeftDown');
       const box = this.$refs.box;
       let that = this;
       clearInterval(this.time);
       // 获取点击时鼠标相对于页面可视区域的位置
       this._x = (e || window.event).clientX;
       this._y = (e || window.event).clientY;
-      // 鼠标移动事件,不要用vue的@mousemove，比原生卡
+      // 鼠标移动事件,不要用vue的@mousemove，比原生卡(感觉上是)
       document.onmousemove = function(e) {
+        // console.log('onmousemove');
         // 记录鼠标移动的哪个位置
         that.x = (e || window.event).clientX;
         that.y = (e || window.event).clientY;
@@ -101,7 +106,8 @@ export default {
       };
       /* 鼠标松开后清除鼠标移动事件,不要用vue的@mouseup,鼠标移到页面外松开不会触发 */
       document.onmouseup = function(e) {
-        document.onmousemove = null;
+        // console.log('onmouseup');
+        document.onmousemove = null;  // 销毁鼠标移动事件
         // 松开鼠标后利用setInterval制造惯性旋转
         that.time = setInterval(() => {
           // 无限乘以0.95使其接近0

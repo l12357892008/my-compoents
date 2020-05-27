@@ -25,6 +25,7 @@
       { 'is-button': button }
     ]"
     :tabindex="tabIndex"
+    :style="model === label ? (button ? activeStyle.fillButton : (border ? activeStyle.fillBorder : null))  : null"
     @keydown.space.stop.prevent="model = isDisabled ? model : label"
   >
     <span
@@ -34,7 +35,10 @@
         'is-checked': model === label
       }"
     >
-      <span class="my-radio__inner" v-if="!button"></span>
+      <!-- 将input隐藏,以my-radio__inner来表现样式 -->
+      <span class="my-radio__inner" v-if="!button" 
+        :style="model === label ? activeStyle.fillInner  : null">
+      </span>
       <input
         ref="radio"
         class="my-radio__original"
@@ -44,12 +48,14 @@
         @focus="focus = true"
         @blur="focus = false"
         @change="handleChange"
-        :name='name'
-        :disabled='isDisabled'
+        :name="name"
+        :disabled="isDisabled"
         tabindex="-1"
       />
     </span>
-    <span class="my-radio__label" @keydown.stop>
+    <span class="my-radio__label"
+     :style="model === label ? (button ? activeStyle.textColor : activeStyle.textColorBorder)  : null"
+     @keydown.stop >
       <slot></slot>
       <template v-if="!$slots.default">{{label}}</template>
     </span>
@@ -57,29 +63,29 @@
 </template>
 
 <script>
-import emitter from '../AAMIXINS/emitter'
+import emitter from "../AAMIXINS/emitter";
 export default {
   name: "MyRadio",
   inject: {
     myForm: {
-      default: ''
+      default: ""
     },
     myFormItem: {
-      default: ''
+      default: ""
     }
   },
   props: {
     value: {},
     label: {},
     disabled: Boolean, // 是否禁用
-    name: String,  // 原生name属性
-    border: Boolean,  // 是否带边框
-    size: String,  // 尺寸
+    name: String, // 原生name属性
+    border: Boolean, // 是否带边框
+    size: String, // 尺寸
     button: Boolean // 是否按钮形态
   },
   data() {
     return {
-      focus: false  // 是否获取焦点
+      focus: false // 是否获取焦点
     };
   },
   computed: {
@@ -100,17 +106,40 @@ export default {
       return false;
     },
     bordered() {
-      return this.border || this.button
+      return this.border || this.button;
     },
-    model: {  // 单选框的唯一标识值
-      get() {  // get当使用model时调用，根据有无使用RadioGroup返回RadioGroup绑定的值或自身绑定的值
+    activeStyle() {  // myRadioGroup里设定了文字颜色和填充色
+      if(!this.isGroup) return {}
+      return {
+        fillBorder: {
+          borderColor: this._radioGroup.fill || ""
+        },
+        fillInner: {
+          backgroundColor: this._radioGroup.fill || "",
+          borderColor: this._radioGroup.fill || ""
+          },
+        fillButton: {
+          backgroundColor: this._radioGroup.fill || "",
+          borderColor: this._radioGroup.fill || "",
+          boxShadow: this._radioGroup.fill
+            ? `-1px 0 0 0 ${this._radioGroup.fill}`
+            : ""
+          },
+        textColor:{color: this._radioGroup.textColor || ""},
+        textColorBorder:{color: this._radioGroup.fill || ""}
+      };
+    },
+    model: {
+      // 单选框的唯一标识值
+      get() {
+        // get当使用model时调用，根据有无使用RadioGroup返回RadioGroup绑定的值或自身绑定的值
         return this.isGroup ? this._radioGroup.value : this.value;
       },
       // 当model值发生变化时调用通过$emit的input事件来更新父组件的值，只有点击该项单选按钮时才会调用
       // 父组件传来的值变化不会调用该函数
       set(val) {
         if (this.isGroup) {
-          this.dispatch("MyRadioGroup", "input", [val]);  // mixins混入方法,将$emit放到MyRadioGroup组件中执行
+          this.dispatch("MyRadioGroup", "input", [val]); // mixins混入方法,将$emit放到MyRadioGroup组件中执行
         } else {
           this.$emit("input", val);
         }
@@ -119,34 +148,43 @@ export default {
       }
     },
     radioSize() {
-      const temRadioSize = this.size || (this.myFormItem || {}).myFormItemSize || (this.$ELEMENT || {}).size;
+      const temRadioSize =
+        this.size ||
+        (this.myFormItem || {}).myFormItemSize ||
+        (this.$ELEMENT || {}).size;
       return this.isGroup
         ? this._radioGroup.radioGroupSize || temRadioSize
         : temRadioSize;
     },
     isDisabled() {
       return this._radioGroup
-        ? this._radioGroup.disabled || this.disabled || (this.myForm || {}).disabled
+        ? this._radioGroup.disabled ||
+            this.disabled ||
+            (this.myForm || {}).disabled
         : this.disabled || (this.myForm || {}).disabled;
     },
-    tabIndex() {  // 按tab键时是否切换到该元素
+    tabIndex() {
+      // 按tab键时是否切换到该元素
       return this.isDisabled || (this.isGroup && this.model !== this.label)
         ? -1
         : 0;
     }
   },
   methods: {
-    handleChange() {  // 
-      this.$nextTick(() => { // DOM更新完成后才执行，这样才能拿到最新的数据
+    handleChange() {
+      //
+      this.$nextTick(() => {
+        // DOM更新完成后才执行，这样才能拿到最新的数据
         this.$emit("change", this.model);
-        this.isGroup && this.dispatch("MyRadioGroup", "handleChange", this.model);
+        this.isGroup &&
+          this.dispatch("MyRadioGroup", "handleChange", this.model);
       });
     }
   },
-  mixins: [emitter],
+  mixins: [emitter]
 };
 </script>
 
 <style lang='scss' scoped>
-@import '../AACSS/radio.scss';
+@import "../AACSS/radio.scss";
 </style>

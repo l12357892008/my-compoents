@@ -1,5 +1,5 @@
 <template>
-  <div id="gallery3D">
+  <div id="gallery3D" class="flex_center">
     <gallery3D disRotateY>
       <img src="./img/1.jpg"/>
       <img src="./img/2.jpg"/>
@@ -30,5 +30,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 </style>

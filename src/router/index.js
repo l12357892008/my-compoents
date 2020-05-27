@@ -13,6 +13,11 @@ const routes = [{
     component: () => import('@/common/pages/Error')
   },
   {
+    path: '/404-2',
+    name: 'Error2',
+    component: () => import('@/common/pages/Error2')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/common/pages/Login')
@@ -43,8 +48,28 @@ const routes = [{
     component: () => import('@/view/gallery3D')
   },
   {
+    path: '/waterMark',
+    name: 'WaterMark',
+    component: () => import('@/view/WaterMark')
+  },
+  {
+    path: '/svgFont',
+    name: 'SVGFont',
+    component: () => import('@/view/SVGFont')
+  },
+  {
+    path: '/7CSS',
+    name: '7CSS',
+    component: () => import('@/view/7CSS')
+  },
+  {
+    path: '/VerifiedFont',
+    name: 'VerifiedFont',
+    component: () => import('@/view/VerifiedFont')
+  },
+  {
     path: '*',
-    redirect: '/404'
+    redirect: '/404-2'
   }
 ]
 console.log('静态路由加载');

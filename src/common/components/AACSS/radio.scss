@@ -13,6 +13,7 @@
   white-space: nowrap;
   outline: none;
   margin-right: 30px;
+  transition: all .2s ease-in;
   @include utils-user-select(none); // 不允许选中文本
 
   @include when(bordered) {
@@ -214,8 +215,13 @@
   }
 
   @include when(button) {
+    text-align: center;
     @include e(label) {
       padding: 0;
+      margin: 0 6px;
+      &:hover{
+        color: $color-primary;
+      }
     }
 
     @include when(checked) {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="fade1" mode="out-in">
-      <router-view v-if="cc" style="flex:1 0" />
+      <router-view v-if="cc" style="flex: auto;"/>
     </transition>
   </div>
 </template>
@@ -77,9 +77,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: rgb(245,245,245);
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
 
   .fade1-enter,

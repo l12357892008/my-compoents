@@ -1,7 +1,7 @@
 <template>
   <div id="hello" class="flex_row_center">
-    <div class="block flex_center" v-for="item in pages" :key='item.src' @click='go(item.src)'>
-      <div>{{item.name}}</div>
+    <div class="block flex_center hover_big" v-for="item in pages" :key='item.src' @click='go(item.src)'>
+      <div style="text-align:center">{{item.name}}</div>
     </div>
   </div>
 </template>
@@ -32,28 +32,40 @@
           },
           {
             src: '/asdfsd',
-            name: '404界面'
+            name: '静态404界面'
+          },
+          {
+            src: '/404-2',
+            name: '弹幕式404界面'
           },
           {
             src: '/digitalRain',
             name: '数字雨'
-          },{
+          },
+          {
             src: '/gallery3D',
             name: '3D画廊'
+          },
+          {
+            src: '/waterMark',
+            name: '水印'
+          },
+          {
+            src: '/svgFont',
+            name: 'svg文字边框'
+          },
+          {
+            src: '/7CSS',
+            name: '7个不常用的CSS属性'
+          },
+          {
+            src: '/VerifiedFont',
+            name: '验证码文字'
           }
         ]
       }
     },
     mounted() {
-      // console.log(formatDate.format('2'));
-      // console.log(formatMoney.format());
-
-      // function a(){
-      //   this.name = 'adfasdf'
-      // }
-      // let b = new a();
-      // console.log(a.prototype,b);
-
       // function getLongestPath(root){   // 遍历树找最长结点
       //     if(!root) return [];
       //     var tempList = [];
@@ -90,6 +102,10 @@
     height: 150px;
     background: pink;
     flex: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
     &:hover {
       background: skyblue;
       color: violet;

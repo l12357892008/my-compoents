@@ -63,27 +63,32 @@
     </div>
     <br/>RadioGroup:<br/>
     <div style="margin-left:10px">
-    <RadioGroup size="mini" v-model="radioValue">
-      <Radio label="1" button>ww</Radio>
-      <Radio label="2" button>ww</Radio>
-      <Radio label="3" button>ww</Radio>
-    </RadioGroup><br/><br/>
-    <el-radio-group v-model="radioValue">
-      <el-radio-button label="1"></el-radio-button>
-      <el-radio-button label="2"></el-radio-button>
-      <el-radio-button label="3"></el-radio-button>
-    </el-radio-group>
+      <RadioGroup size="" v-model="radioValue">
+        <Radio label="1" button></Radio>
+        <Radio label="2" button></Radio>
+        <Radio label="3" button></Radio>
+      </RadioGroup>
+      <br/><br/>
+      <el-radio-group v-model="radioValue">
+        <el-radio-button label="1"></el-radio-button>
+        <el-radio-button label="2"></el-radio-button>
+        <el-radio-button label="3"></el-radio-button>
+      </el-radio-group>
     </div>
+    <Input v-model="dd" :bmd='cell' />
+    <!-- <el-input v-model="dd" type="number" max='32' step="2" autofocus></el-input> -->
+    <input v-model="dd" type="number"  @compositionstart="ccd"
+        @compositionupdate="cca"
+        @compositionend="ccw"/>
   </div>
 </template>
 
 <script>
-import { Button, ButtonGroup, A, Radio, RadioGroup } from "@/common/index.js";
+import { Button, ButtonGroup, A, Radio, RadioGroup,Input } from "@/common/index.js";
 import { _debounce, _throttle } from "@/utils/de-tro";
 export default {
   name: "ffu",
   componentName: "fu",
-  cc: "asdf",
   data() {
     return {
       cell: [1, 2, 3, 4, 5],
@@ -106,9 +111,18 @@ export default {
     }, 1000),
     throttle: _throttle(() => {
       console.log("asd");
-    }, 1000)
+    }, 1000),
+    ccd(){
+      console.log('d');
+    },
+    cca(){
+      console.log('a');
+    },
+    ccw(){
+      console.log('w');
+    }
   },
-  components: { Button, ButtonGroup, A, Radio, RadioGroup }
+  components: { Button, ButtonGroup, A, Radio, RadioGroup, Input }
 };
 </script>
 

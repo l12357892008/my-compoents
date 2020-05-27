@@ -10,10 +10,6 @@ import BaiduMap from 'vue-baidu-map'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/css.js'
 import bilibili from '@/utils/bilibili.js'
-import Vant from 'vant';
-import 'vant/lib/index.css';
-
-Vue.use(Vant);
 
 console.log('main.js加载');
 

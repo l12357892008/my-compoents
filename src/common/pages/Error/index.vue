@@ -1,5 +1,6 @@
 <!--
   describe:
+  静态404页面
   直接在路由中添加路径指向该文件
   {
     path: '/404',
@@ -8,7 +9,7 @@
   }
 -->
 <template>
-  <div id="Error" class="flex">
+  <div id="Error">
     <div class="head404"></div>
     <div class="txtbg404">
       <div class="txtbox">
@@ -24,7 +25,6 @@
 <script>
   export default{
     created() {
-      console.log(this.$route);
     }
   }
 </script>
@@ -32,8 +32,6 @@
 <style scoped>
   #Error{
     background: #494949;
-    width: 100%;
-    height: 100%;
   }
   .head404 {
     width: 580px;

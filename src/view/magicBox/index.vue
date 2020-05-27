@@ -1,8 +1,6 @@
 <template>
-  <div id='hel' class="flex_col">
-    <div class="flex flex_center">
-      <magicBox width='300'/>
-    </div>
+  <div id='hel' class="flex_center">
+    <magicBox width='300'/>
   </div>
 </template>
 
@@ -23,8 +21,8 @@
   }
 </script>
 
-<style scoped>
-  #hel{
-    height: 100%;
-  }
+<style lang='scss' scoped>
+#hel{
+  background: skyblue;
+}
 </style>
