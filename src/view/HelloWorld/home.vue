@@ -56,7 +56,7 @@
           },
           {
             src: '/7CSS',
-            name: '7个不常用的CSS属性'
+            name: '包裹式文字'
           },
           {
             src: '/VerifiedFont',

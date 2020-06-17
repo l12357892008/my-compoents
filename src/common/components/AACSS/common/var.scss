@@ -45,6 +45,12 @@ $border-color-lightest: #F2F6FC !default;
 $border-radius-base: 4px !default;
 $border-default: $border-width-base $border-style-base $border-color-base !default;
 
+/* Disable base
+-------------------------- */
+$disabled-fill-base: $background-color-base !default;
+$disabled-color-base: $color-text-placeholder !default;
+$disabled-border-base: $border-color-light !default;
+
 /* Button
 ------------------------------------*/
 $button-font-size: $font-size-base !default;
@@ -103,6 +109,36 @@ $button-disabled-border-color: $border-color-lighter !default;
 $button-hover-tint-percent: 20% !default;
 $button-active-shade-percent: 10% !default;
 
+
+/* Input
+-------------------------- */
+$input-font-size: $font-size-base !default;
+$input-width: 140px !default;
+$input-height: 40px !default;
+$input-icon-color: $color-text-placeholder !default;
+$input-clear-hover-color: $color-info !default;
+$input-border: $border-default !default;
+$input-border-color: $border-color-base !default;
+$input-border-radius: $border-radius-base !default;
+$input-font-color: $color-text-regular !default;
+$input-placeholder-color: $color-text-placeholder !default;
+$input-hover-border: $border-color-hover !default;
+$input-focus-border: $color-primary !default;
+
+$input-disabled-fill: $disabled-fill-base !default;
+$input-disabled-border: $disabled-border-base !default;
+$input-disabled-color: $disabled-color-base !default;
+$input-disabled-placeholder-color: $color-text-placeholder !default;
+
+$input-big-font-size: 15px !default;
+$input-big-height: 44px !default;
+$input-small-font-size: 14px !default;
+$input-small-height: 36px !default;
+$input-smaller-font-size: 13px !default;
+$input-smaller-height: 32px !default;
+$input-mini-font-size: 12px !default;
+$input-mini-height: 28px !default;
+
 /* Link
  ------------------------------------------------*/
 $link-color: mix(#FFFFFF, $color-primary, 20%) !default;
@@ -120,23 +156,23 @@ $radio-font-color: $color-text-regular !default;
 
 $radio-input-border: $border-default !default;
 
-$radio-border-padding: 12px 14px 12px 10px!default;
+$radio-border-padding: 12px 14px 12px 10px !default;
 $radio-input-height: 14px !default;
 $radio-input-width: 14px !default;
 
-$radio-border-big-padding: 14px 16px 14px 12px!default;
+$radio-border-big-padding: 14px 16px 14px 12px !default;
 $radio-border-big-input-height: 15px !default;
 $radio-border-big-input-width: 15px !default;
 
-$radio-border-small-padding: 10px 14px 10px 10px!default;
+$radio-border-small-padding: 10px 14px 10px 10px !default;
 $radio-border-small-input-height: 13px !default;
 $radio-border-small-input-width: 13px !default;
 
-$radio-border-smaller-padding: 9px 12px 9px 8px!default;
+$radio-border-smaller-padding: 9px 12px 9px 8px !default;
 $radio-border-smaller-input-height: 13px !default;
 $radio-border-smaller-input-width: 13px !default;
 
-$radio-border-mini-padding: 7px 10px 7px 6px!default;
+$radio-border-mini-padding: 7px 10px 7px 6px !default;
 $radio-border-mini-input-height: 12px !default;
 $radio-border-mini-input-width: 12px !default;
 
@@ -145,3 +181,10 @@ $radio-disabled-icon-color: $background-color-base !default;
 $radio-disabled-input-border-color: $border-color-light !default;
 
 $radio-disabled-checked-icon-color: $color-text-placeholder !default;
+
+
+/* Transition
+-------------------------- */
+$border-transition-base: border-color .2s cubic-bezier(.645,.045,.355,1) !default;
+$color-transition-base: color .2s cubic-bezier(.645,.045,.355,1) !default;
+

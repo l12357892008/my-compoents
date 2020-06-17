@@ -1,9 +1,9 @@
 <template>
   <div id="Icon" ref="ddd" class="flex_row_center">
-    <div class="flex_row" style="flex-wrap: wrap;width:1400px">
-      <div class="block flex_center flex_col" v-for="i in iconsR" :key="i">
-        <i :class="i" />
-        <div>{{i}}</div>
+    <div class="block flex_center" v-for="i in iconsR" :key="i">
+      <div style="text-align:center">
+      <i :class="i" />
+      <div>{{i}}</div>
       </div>
     </div>
   </div>
@@ -314,9 +314,8 @@ export default {
 <style lang='scss' scoped>
 #Icon {
   background: white;
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  align-content: flex-start;
   overflow-y: auto;
 }
 .block {

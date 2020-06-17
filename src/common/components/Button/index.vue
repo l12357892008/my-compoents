@@ -81,11 +81,11 @@ export default {
       }
       return false
     },
-    /* 根据父组件传的disabled和两层封装Form中传来的myForm判断是否需要禁用按钮 */
+    /* 根据父组件传入的值和祖先组件Form中的设置判断是否禁用 */
     buttonDisabled() {
       return this.disabled || this.loading || this.myForm.disabled;
     },
-    /* 根据父组件和两层封装Form中传来的myForm计算按钮尺寸 */
+    /* 根据父组件传入的值和祖先组件Form中的设置计算按钮尺寸 */
     buttonSize() {
       const temButtonSize = this.size || this.myForm.myFormItemSize
       return this.isGroup 

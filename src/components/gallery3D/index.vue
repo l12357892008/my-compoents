@@ -36,9 +36,10 @@ export default {
   },
   mounted() {
     /**不用定时函数没法触发初始动画,
-     * 我也不知道为什么，
+     * 我也不知道为什么，用nextTick也不行
      * 我也很绝望
      */
+    // this.$nextTick(this.init)
     setTimeout(() => {
       this.init();
     }, 0);

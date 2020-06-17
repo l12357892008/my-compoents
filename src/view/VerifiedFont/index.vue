@@ -13,7 +13,7 @@
     data() {
       return {
         cc: '',
-        ww: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        ww: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
         text: 'cbfd'
       }
     },

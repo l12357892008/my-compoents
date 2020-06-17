@@ -30,8 +30,7 @@ export default class format{
 
   /**************************************************/
   static isNumber(val) {
-    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
-    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    const regFeiNum = /[^0-9\.]/
     if (regPos.test(val) || regNeg.test(val)) {
       return true;
     } else {
@@ -52,19 +51,14 @@ export default class format{
     let money = Number(data.toString().match(/^\d+(?:\.\d{0,2})?/)).toString();
     let intNum = money.split('.')[0];
     let decimalNum = money.split('.')[1]
-    let result = [],
-      counter = 0;
-    for (let i = intNum.length - 1; i >= 0; i--) {
-      counter++;
-      result.unshift(intNum[i]);
-      if (!(counter % 3) && i != 0) {
-        result.unshift(',');
-      }
+    let result = '0';
+    if(intNum.length > 0){
+      result = intNum.replace(/(?!^)(?=(\d{3})+$)/g,',')
     }
     if (decimalNum) {
-      return result.join('') + '.' + decimalNum
+      return result + '.' + decimalNum
     } else {
-      return result.join('')
+      return result
     }
   }
 

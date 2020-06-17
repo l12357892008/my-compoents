@@ -13,12 +13,15 @@
     <div class="head404 flex_center">
       <canvas id="canvas" ref="canv"></canvas>
     </div>
-    <div class="txtbg404" ref="txtbg404">
-      <div class="txtbox">
-        <p>对不起，您请求的页面不存在、或已被删除、或暂时不可用</p>
-        <p class="paddingbox">请点击以下链接继续浏览网页</p>
-        <p @click="$router.go(-1)" style="cursor:pointer;">》返回上一页面</p>
-        <p @click="$router.replace('/')" style="cursor:pointer">》返回网站首页</p>
+    <div class="tt flex_col_middle" style="height: 100%;">
+      <div class="flex"></div>
+      <div class="txtbg404" ref="txtbg404">
+        <div class="txtbox">
+          <p>对不起，您请求的页面不存在、或已被删除、或暂时不可用</p>
+          <p class="paddingbox">请点击以下链接继续浏览网页</p>
+          <p @click="$router.go(-1)" style="cursor:pointer;">》返回上一页面</p>
+          <p @click="$router.replace('/')" style="cursor:pointer">》返回网站首页</p>
+        </div>
       </div>
     </div>
   </div>
@@ -70,10 +73,8 @@ export default {
     },
     init() {
       const that = this
-      const txtbg404 = this.$refs.txtbg404;
       const w = window.innerWidth; // 网页可见区域宽，和document.body.offsetWidth相同...........吧
       const h = window.innerHeight;
-      txtbg404.style.left = (w / 2 - 230)+ "px"; // 将返回菜单定在水平中央
       const canvas = this.$refs.canv;
       canvas.width = w;
       canvas.height = h;
@@ -178,20 +179,23 @@ export default {
 #Error {
   background: #494949;
 }
+.head404{
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+}
 canvas {
   background: #494949;
   display: block;
-  z-index: 1;
-  opacity: 0.5;
-  pointer-events: none;
+}
+.tt{
+  z-index: 0;
 }
 .txtbg404 {
-  position: fixed;
   width: 499px;
   height: 169px;
-  bottom: 0;
   background: url(./img/txtbg404.png) no-repeat;
-  z-index: 0;
 }
 
 .txtbg404 .txtbox {

@@ -57,6 +57,12 @@
   flex-direction: column;
 }
 
+.flex_col_middle { /*垂直布局左右居中*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .flex_col_center { /*垂直布局上下居中*/
   display: flex;
   flex-direction: column;
@@ -80,6 +86,7 @@
 .hover_big:hover {
   transform: scale(1.2);
   z-index: 1;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .flutter { /*左右抖动*/

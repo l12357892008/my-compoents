@@ -1,8 +1,8 @@
 /*去除浏览器自带样式*/
 
 *{
-    box-sizing: border-box;
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 /**
  * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
@@ -21,26 +21,26 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video, input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-weight: normal;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
 }
 button{
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 /* 去除type=number后面的按钮 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 /* 修改placehold颜色 */
 input::-webkit-input-placeholder,input::-moz-input-placeholder,input::-ms-input-placeholder {
@@ -50,63 +50,70 @@ input::-webkit-input-placeholder,input::-moz-input-placeholder,input::-ms-input-
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
+  line-height: 1;
 }
 
 blockquote, q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content: none;
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* custom */
 a {
-    color: #7e8c8d;
-    text-decoration: none;
-    -webkit-backface-visibility: hidden;
+  color: #7e8c8d;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 /*滚动条样式*/
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
-::-webkit-scrollbar-track-piece {
-    background-color: rgba(0, 0, 0, 0.2);
-    -webkit-border-radius: 6px;
+/*滚动条上的按钮 (上下箭头)，singel-button为上面只有上的按钮,下面只有下的按钮
+* 不写默认double-button，两边都有控制两个方向的按钮
+*/
+::-webkit-scrollbar-button:single-button{}
+::-webkit-scrollbar-track { /*滚动条轨道*/
+	background-color: rgba(0, 0, 0, 0.2);
 }
-::-webkit-scrollbar-thumb:vertical {
-    height: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
+::-webkit-scrollbar-track-piece {   /*滚动条没有滑块的轨道部分.*/
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0px;
 }
-::-webkit-scrollbar-thumb:horizontal {
-    width: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
+::-webkit-scrollbar-thumb {   /* 滚动条上的滚动滑块 */
+  background-color: rgba(125, 125, 125, 0.7);
+  border-radius: 6px;
 }
+::-webkit-scrollbar-thumb:vertical {  /* 滚动条上的滚动滑块,上下滑动的那个 */
+  background-color: rgba(125, 125, 125, 0.7);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-corner{} /*当同时有垂直滚动条和水平滚动条时交汇的部分.*/
+::-webkit-resizer{}  /*某些元素的corner部分的部分样式(例:textarea的可拖动按钮)*/
 
 html, body {
-    width: 100%;
+  width: 100%;
 }
 
 body {
-    -webkit-text-size-adjust: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }

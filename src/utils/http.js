@@ -9,11 +9,14 @@ import {
 } from 'element-ui';
 import router from '../router'
 
-axios.defaults.timeout = 5000;
-// axios.defaults.baseURL = 'http://www.51jl.store/api';
-axios.defaults.baseURL = 'http://www.4399.com';
+axios.defaults.timeout = 10000;  // 默认超时时间
+axios.defaults.baseURL = '';  // 默认域名
+// axios.defaults.withCredentials = true; // 跨域请求如果要携带cookie就要加这一句
+// 设置默认请求数据格式，在request拦截器里设置也可以，axios默认为application/json
+// axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.transformRequset = data => qs.stringify(data)  // 用于统一作数据转换,qs基本不需要了,用axios的params自己就可以处理
 
-//http request 拦截器
+//http request 拦截器，用于动态统一设置头部之类的
 // axios.interceptors.request.use(
 //   config => {
 //     // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
@@ -22,9 +25,11 @@ axios.defaults.baseURL = 'http://www.4399.com';
 //     // config.headers = {
 //     //   'Content-Type': 'application/x-www-form-urlencoded'
 //     // }
-//     console.log(config)
-//     // if(token){
+//     // if(token){ // 看后台需要从哪里取token就给他在哪里带上
 //     //   config.params = {'token':token}
+//     // }
+//     // if(token){ 
+//     //   config.headers.Authorization = token
 //     // }
 //     return config;
 //   },
@@ -76,7 +81,7 @@ axios.interceptors.response.use(
 export function get(url, params = {}) {
   return new Promise((resolve, reject) => {
     axios.get(url, {
-      params: params
+      params: params,
     }).then(response => {
       resolve(response.data);
     }).catch(err => {
@@ -111,16 +116,16 @@ export function post(url, data = {}) {
  * @returns {Promise}
  */
 
-// export function patch(url, data = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.patch(url, data)
-//       .then(response => {
-//         resolve(response.data);
-//       }, err => {
-//         reject(err)
-//       })
-//   })
-// }
+export function patch(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.patch(url, data)
+      .then(response => {
+        resolve(response.data);
+      }, err => {
+        reject(err)
+      })
+  })
+}
 
 /**
  * 封装put请求
@@ -129,13 +134,14 @@ export function post(url, data = {}) {
  * @returns {Promise}
  */
 
-// export function put(url, data = {}) {
-//   return new Promise((resolve, reject) => {
-//     axios.put(url, data)
-//       .then(response => {
-//         resolve(response.data);
-//       }, err => {
-//         reject(err)
-//       })
-//   })
-// }
+export function put(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    axios.put(url, data)
+      .then(response => {
+        resolve(response.data);
+      }, err => {
+        reject(err)
+      })
+  })
+}
+

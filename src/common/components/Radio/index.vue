@@ -36,7 +36,7 @@
       }"
     >
       <!-- 将input隐藏,以my-radio__inner来表现样式 -->
-      <span class="my-radio__inner" v-if="!button" 
+      <span class="my-radio__inner" v-if="!button"
         :style="model === label ? activeStyle.fillInner  : null">
       </span>
       <input

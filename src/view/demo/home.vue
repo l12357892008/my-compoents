@@ -45,7 +45,7 @@
     </div>
     <br />radio:<br />
     <div class="radio" style="margin-left:10px">
-      <Radio v-model="radioValue" label="1"></Radio>
+      <Radio v-model="radioValue" label="1" cc='sdafads' @bb='cc'></Radio>
       <Radio v-model="radioValue" label="2" border size='mini'>我是2</Radio>
       <Radio v-model="radioValue" label="3" button></Radio>
       <Radio v-model="radioValue" label="3" button disabled></Radio>
@@ -75,16 +75,21 @@
         <el-radio-button label="3"></el-radio-button>
       </el-radio-group>
     </div>
-    <Input v-model="dd" :bmd='cell' />
-    <!-- <el-input v-model="dd" type="number" max='32' step="2" autofocus></el-input> -->
-    <input v-model="dd" type="number"  @compositionstart="ccd"
-        @compositionupdate="cca"
-        @compositionend="ccw"/>
+    <Input v-model="dd" type='text' clearable showWordLimit :maxlength='30' prefix-icon="my-icon-search" suffix-icon="my-icon-date">
+      <template slot="prepend"><Button>sadf</Button></template>
+      <template slot="append">.com</template>
+    </Input>
+    <span>wowowo</span>
+    <el-input showWordLimit v-model="dd" type='text' :maxlength='30' prefix-icon="el-icon-search" suffix-icon="el-icon-date">
+      <i slot="suffix" class="el-input__icon el-icon-date"></i>
+      <template slot="prepend">Http://</template>
+      <template slot="append">.com</template>
+    </el-input>
   </div>
 </template>
 
 <script>
-import { Button, ButtonGroup, A, Radio, RadioGroup,Input } from "@/common/index.js";
+import { Button, ButtonGroup, A, Radio, RadioGroup, Input } from "@/common/index.js";
 import { _debounce, _throttle } from "@/utils/de-tro";
 export default {
   name: "ffu",
@@ -94,6 +99,7 @@ export default {
       cell: [1, 2, 3, 4, 5],
       cc: true, // b   dasfas
       radioValue: "4",
+      ew: 30,
       dd: "<div>sb</div>",
       asd: {
         dsa: {
@@ -103,7 +109,8 @@ export default {
     };
   },
   props: {},
-  mounted() {},
+  mounted() {
+  },
   watch: {},
   methods: {
     debounce: _debounce(() => {
@@ -120,6 +127,8 @@ export default {
     },
     ccw(){
       console.log('w');
+      this.$emit('qwe','w');
+      this.$on('asdf','2')
     }
   },
   components: { Button, ButtonGroup, A, Radio, RadioGroup, Input }
@@ -129,5 +138,7 @@ export default {
 <style lang="scss" scoped>
 #demo {
   font-size: 14px;
+  overflow: auto;
+  position: relative;
 }
 </style>

@@ -3,7 +3,7 @@
 
 /* BEM规范
  --------------------------------------------------------------------*/
-@mixin b($block) {
+@mixin b($block) {   // my-block
   $B: $namespace + '-'+ $block !global;
 
   .#{$B} {
@@ -16,7 +16,7 @@
   $selector: &;
   $currentSelector: "";
 
-  @each $unit in $element {
+  @each $unit in $element {   // my-block__element
     $currentSelector: #{$currentSelector + "." + $B + $element-link + $unit + ","};
   }
 
@@ -38,7 +38,7 @@
   }
 }
 
-@mixin m($modifier) {
+@mixin m($modifier) {  // $my-block--modifier
   $currentSelector: "";
 
   @each $unit in $modifier {
@@ -51,6 +51,33 @@
     }
   }
 }
+
+/* scroll-bar
+  -------------------------------------------------------------------*/
+
+@mixin scroll-bar() {
+  $scrollbar-thumb-corlor : #b4bccc; // 滚动条滑块颜色
+  $scrollbar-track-corlor : #fff; // 滚动条滑轨颜色
+
+  &::-webkit-scrollbar{
+    z-index: 11;
+    width: 6px;
+    height: 6px;
+    &-thumb{
+      border-radius: 5px;
+      width: 6px;
+      background-color: $scrollbar-thumb-corlor;
+    }
+    &-corner{
+      background: $scrollbar-track-corlor;
+    }
+    &-track{
+      background: $scrollbar-track-corlor;
+    }
+
+  }
+}
+
 
 /*-------------------------------------------------------------------*/
 
