@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import { Button } from '@/common/index.js'
-  import format from '@/utils/format.js'
+  import format from '@/utils/format.js';
+  import {store,mutations} from '../../vuex/mystore.js';
   export default {
     name: 'HelloWorld',
     data() {
@@ -66,28 +66,16 @@
       }
     },
     mounted() {
-      // function getLongestPath(root){   // 遍历树找最长结点
-      //     if(!root) return [];
-      //     var tempList = [];
-      //     for(var i=0;i<root.children.length;i++){
-      //     	var ret = getLongestPath(root.children[i]);
-      //     	if(ret.length>tempList.length){
-      //     	    tempList = ret.slice();
-      //     	}
-      //     }
-      //     tempList.push(root.nodeName.toLowerCase());
-      //     return tempList
-      // }
-      // console.log(window.document.getElementsByTagName('body')[0]);
-      // let a = getLongestPath(window.document.getElementsByTagName('body')[0])
-      // console.log(a);
+      mutations.setUserInfo(
+      {
+        name: 'sdafasdf',
+      })
     },
     methods: {
       go(src){
         this.$router.push(src);
       }
     },
-    components: { Button }
   }
 </script>
 

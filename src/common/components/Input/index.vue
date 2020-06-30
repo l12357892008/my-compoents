@@ -1,3 +1,40 @@
+<!--
+  describe:
+  1.引入: import {当前组件名称} from '@/common'
+  2.接受属性:
+    1.type: String,类型,默认'text',可选值:'text/textarea以及其他原生input的type值'
+    2.size: String,按钮大小,可选值: 'big/small/smaller/mini'
+    3.value/v-model: String/number,绑定值
+    4.minlength和maxlength: number,原生属性,最大最小输入长度
+    5.placeholder: String,输入框占位文本
+    6.show-word-limit: Boolean,是否显示输入字数统计,只在type='text/textarea'时生效
+    7.clearable: Boolean,是否可清空
+    8.show-password: Boolean,是否显示切换密码图标
+    9.disabled: boolean,是否禁用
+    10.prefix-icon: string,输入框头部图标类名
+    11.suffix-icon: string,输入框尾部图标类名
+    13.autosize: boolean/object,默认false,自适应内容高度,可以传入对象如{ minRows: 2, maxRows: 6 }
+    14.autocomplete: string,原生属性，是否自动补全,可选值:on/off
+    15.name: string,原生属性
+    16.readonly: boolean,是否只读
+    17.min/max:原生属性,最大最小值
+    18.step: 原生属性,输入字段合法数字间隔
+    19.resize: boolean,是否能被用户缩放,可选值:none,both,horizontal,vertical
+    20.autofocus: boolean,原生属性,自动获取焦点
+    21.form: string,原生属性
+    22.label: string,输入框关联的label文字
+    23.tabindex: string,输入框的tabindex
+    24.validate-event: boolean 输入时是否触发表单校验
+  3.插槽:
+    <i slot="suffix" class="my-input__icon my-icon-date"></i>
+    <i slot="suffix" class="my-input__icon my-icon-date"></i>
+    <template slot="prepend">
+      <my-button>sadf</my-button>
+    </template>
+    <template slot="append">.com</template>
+  4.事件: @blur     @focus   @change   @input   @clear
+  5.方法: 获取根据id class 或ref 获取dom元素 .focus() .blur() .select()
+-->
 <template>
   <div :class="[
       type === 'textarea' ? 'my-textarea' : 'my-input',
@@ -35,6 +72,7 @@
         :readonly = 'readonly'
         :autocomplete="autocomplete"
         ref = 'input'
+        v-bind="$attrs"
         @compositionstart = "handleCompositionStart"
 				@compositionupdate = "handleCompositionUpdate"
 				@compositionend = "handleCompositionEnd"
@@ -76,6 +114,7 @@
         :tabindex="tabindex"
         class="my-textarea__inner"
         ref = 'textarea'
+        v-bind="$attrs"
         :disabled = 'inputDisabled'
         :readonly = 'readonly'
         :autocomplete="autocomplete"
@@ -157,9 +196,9 @@
     created() {
       // 监听inputSelect事件有没有被触发,触发了就选中文本域里的内容
       // 我全文件搜索也没找到哪里有触发这个，先屏蔽了，以后有需要再实现
-      // this.$on('inputSelect', () => {
-      //   this.getInput().select()
-      // });
+      this.$on('inputSelect', () => {
+        this.getInput().select()
+      });
     },
     mounted() {
       this.setNativeInputValue();
@@ -298,9 +337,11 @@
           }
         }
       },
-      // select() {  // 在create注释掉的那段调用了,就是自身或子组件触发了inputSelect事件就选中文本框里的字符串
-      //   this.getInput().select();
-      // },
+      // 在create注释掉的那段调用了,就是自身或子组件触发了inputSelect事件就选中文本框里的字符串,且可以通过
+      // 获取组件dom  .select()调用该函数
+      select() {
+        this.getInput().select();
+      },
       /* 在mixins引入的migrating里的mounted里调用了
        * 用于迁移指导,如果用户使用了1.0的icon等属性就告诉他这个被废弃了
        * */
@@ -356,7 +397,6 @@
         // this.$el当前组件根元素(此例中为my-input 或my-textarea),$root是组件树的根元素
         // 找到class为.my-input__suffix或是.my-input__prefix的元素
         let elList = [].slice.call(this.$el.querySelectorAll(`.my-input__${place}`) || []);
-        console.log(elList[0].parentNode,this.$el);
         if (!elList.length) return;
         let el = null;
         // 避免找错

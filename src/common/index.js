@@ -1,10 +1,10 @@
-import A from './components/Link';
-import Button from './components/Button';
-import ButtonGroup from './components/ButtonGroup';
-import Radio from './components/Radio';
-import RadioGroup from './components/RadioGroup';
-import Input from './components/Input';
+import MyLink from './components/Link';
+import MyButton from './components/Button';
+import MyButtonGroup from './components/ButtonGroup';
+import MyRadio from './components/Radio';
+import MyRadioGroup from './components/RadioGroup';
+import MyInput from './components/Input';
 
 export{
-    A,Button,ButtonGroup,Input,Radio,RadioGroup
+    MyButton,MyButtonGroup,MyInput,MyLink,MyRadio,MyRadioGroup
 }

@@ -27,12 +27,14 @@
 </template>
 
 <script>
+  import {store,mutations} from '../../vuex/mystore.js';
 export default {
   data () {
     return {
     }
   },
   created() {
+    console.log(store.userInfo);
   },
   methods: {
   },

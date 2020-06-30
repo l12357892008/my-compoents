@@ -1,36 +1,39 @@
 <template>
   <div id="demo" style="background: white;">
-    防抖节流:<br />
+    防抖节流:
+    <br />
     <div class="button">
-      <Button class type="success" size="mini" icon="my-icon-arrow-left" @click="debounce">
+      <my-button class type="success" size="mini" icon="my-icon-arrow-left" @click="debounce">
         防抖
         <i class="my-icon-arrow-right" />
-      </Button>
+      </my-button>
       <el-button type="peimary" icon="my-icon-arrow-left" size="mini" @click="throttle">
         节流
         <i class="my-icon-arrow-right" />
       </el-button>
     </div>
-    <br />Button:<br />
+    <br />my-button:
+    <br />
     <div class="button">
-      <Button type="primary" size="mini" round>我</Button>
-      <Button type="danger" size="smaller">我</Button>
-      <Button>我</Button>
-      <Button circle size="mini">我</Button>
+      <my-button type="primary" size="mini" round>我</my-button>
+      <my-button type="danger" size="smaller">我</my-button>
+      <my-button>我</my-button>
+      <my-button circle size="mini">我</my-button>
       <br />
       <el-button type="primary" size="mini" round>我</el-button>
       <el-button type="danger" size="small">我</el-button>
       <el-button>我</el-button>
       <el-button circle size="mini">我</el-button>
     </div>
-    <br />ButtonGroup:<br />
+    <br />my-button-group:
+    <br />
     <div class="buttonGroup">
-      <ButtonGroup>
-        <Button type="primary" round>我</Button>
-        <Button type="danger">我</Button>
-        <Button>我</Button>
-        <Button type="success">我</Button>
-      </ButtonGroup>
+      <my-button-group>
+        <my-button type="primary" round>我</my-button>
+        <my-button type="danger">我</my-button>
+        <my-button>我</my-button>
+        <my-button type="success">我</my-button>
+      </my-button-group>
       <el-button-group>
         <el-button type="primary" round>我</el-button>
         <el-button type="danger">我</el-button>
@@ -38,58 +41,91 @@
         <el-button type="success">我</el-button>
       </el-button-group>
     </div>
-    <br />link:<br />
-    <div class="A">
-      <A icon="my-icon-arrow-left">中文sdf</A>
+    <br />link:
+    <br />
+    <div class="my-link">
+      <my-link icon="my-icon-arrow-left">中文sdf</my-link>
       <el-link>中文asf</el-link>
     </div>
-    <br />radio:<br />
+    <br />radio:
+    <br />
     <div class="radio" style="margin-left:10px">
-      <Radio v-model="radioValue" label="1" cc='sdafads' @bb='cc'></Radio>
-      <Radio v-model="radioValue" label="2" border size='mini'>我是2</Radio>
-      <Radio v-model="radioValue" label="3" button></Radio>
-      <Radio v-model="radioValue" label="3" button disabled></Radio>
-      <Radio v-model="radioValue" label="3" border disabled></Radio>
-      <br/>
+      <my-radio v-model="radioValue" label="1" cc="sdafads" @bb="cc"></my-radio>
+      <my-radio v-model="radioValue" label="2" border size="mini">我是2</my-radio>
+      <my-radio v-model="radioValue" label="3" button></my-radio>
+      <my-radio v-model="radioValue" label="3" button disabled></my-radio>
+      <my-radio v-model="radioValue" label="3" border disabled></my-radio>
+      <br />
       <el-radio v-model="radioValue" label="1"></el-radio>
       <el-radio v-model="radioValue" label="2" border size="mini">我是2</el-radio>
       <el-radio v-model="radioValue" label="1" disabled border></el-radio>
-      <br/>
-      原生写法:
+      <br />原生写法:
       <label>
         <input id="jj" type="radio" value="2" v-model="radioValue" />
         sdafasdf
       </label>
     </div>
-    <br/>RadioGroup:<br/>
+    <br />RadioGroup:
+    <br />
     <div style="margin-left:10px">
-      <RadioGroup size="" v-model="radioValue">
-        <Radio label="1" button></Radio>
-        <Radio label="2" button></Radio>
-        <Radio label="3" button></Radio>
-      </RadioGroup>
-      <br/><br/>
+      <my-radio-group size v-model="radioValue">
+        <my-radio label="1" button></my-radio>
+        <my-radio label="2" button></my-radio>
+        <my-radio label="3" button></my-radio>
+      </my-radio-group>
+      <br />
       <el-radio-group v-model="radioValue">
         <el-radio-button label="1"></el-radio-button>
         <el-radio-button label="2"></el-radio-button>
         <el-radio-button label="3"></el-radio-button>
       </el-radio-group>
     </div>
-    <Input v-model="dd" type='text' clearable showWordLimit :maxlength='30' prefix-icon="my-icon-search" suffix-icon="my-icon-date">
-      <template slot="prepend"><Button>sadf</Button></template>
-      <template slot="append">.com</template>
-    </Input>
-    <span>wowowo</span>
-    <el-input showWordLimit v-model="dd" type='text' :maxlength='30' prefix-icon="el-icon-search" suffix-icon="el-icon-date">
-      <i slot="suffix" class="el-input__icon el-icon-date"></i>
-      <template slot="prepend">Http://</template>
-      <template slot="append">.com</template>
-    </el-input>
+    <br />Input:
+    <br />
+    <div style="margin-left:10px">
+      <my-input
+        ref='ddde'
+        id="eee"
+        v-model="dd"
+        type="text"
+        clearable
+        showWordLimit
+        :maxlength="30"
+        prefix-icon="my-icon-search"
+        suffix-icon="my-icon-date"
+      >
+        <template slot="prepend">
+          <my-button>sadf</my-button>
+        </template>
+        <template slot="append">.com</template>
+      </my-input>
+      <br />
+      <br />
+      <el-input
+        showWordLimit
+        v-model="dd"
+        type="text"
+        :maxlength="30"
+        prefix-icon="el-icon-search"
+        suffix-icon="el-icon-date"
+      >
+        <i slot="suffix" class="el-input__icon el-icon-date"></i>
+        <template slot="prepend">Http://</template>
+        <template slot="append">.com</template>
+      </el-input>
+    </div>
   </div>
 </template>
 
 <script>
-import { Button, ButtonGroup, A, Radio, RadioGroup, Input } from "@/common/index.js";
+import {
+  MyButton,
+  MyButtonGroup,
+  MyLink,
+  MyRadio,
+  MyRadioGroup,
+  MyInput
+} from "@/common/index.js";
 import { _debounce, _throttle } from "@/utils/de-tro";
 export default {
   name: "ffu",
@@ -110,6 +146,8 @@ export default {
   },
   props: {},
   mounted() {
+    let a = document.getElementById('eee')
+    a.select();
   },
   watch: {},
   methods: {
@@ -119,19 +157,19 @@ export default {
     throttle: _throttle(() => {
       console.log("asd");
     }, 1000),
-    ccd(){
-      console.log('d');
+    ccd() {
+      console.log("d");
     },
-    cca(){
-      console.log('a');
+    cca() {
+      console.log("a");
     },
-    ccw(){
-      console.log('w');
-      this.$emit('qwe','w');
-      this.$on('asdf','2')
+    ccw() {
+      console.log("w");
+      this.$emit("qwe", "w");
+      this.$on("asdf", "2");
     }
   },
-  components: { Button, ButtonGroup, A, Radio, RadioGroup, Input }
+  components: { MyButton,MyButtonGroup,MyLink,MyRadio,MyRadioGroup,MyInput }
 };
 </script>
 
@@ -140,5 +178,16 @@ export default {
   font-size: 14px;
   overflow: auto;
   position: relative;
+}
+
+#feee{
+  background: blue;
+  &::after{
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: blue;
+  }
 }
 </style>
