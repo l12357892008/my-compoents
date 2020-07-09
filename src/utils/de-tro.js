@@ -6,6 +6,7 @@ export function _debounce(func, wait) {
   return function () {
     var context = this  // 解决this指向改变
     var args = arguments  // 解决传参丢失问题
+    console.log(args);
     if (timeout) {
       clearTimeout(timeout);
     }
