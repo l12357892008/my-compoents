@@ -117,3 +117,29 @@
   border-radius: 50%;
   background: #FFD43D;
 }
+
+.doubleDot{ /* 双层圆点 */
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 10px solid;
+  border-radius: 50%;
+  background-color: currentColor;
+  background-clip: content-box;
+}
+
+.noSelect{  /* 禁止选中 */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.disabled {  // 禁止点击
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}

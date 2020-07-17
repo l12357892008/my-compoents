@@ -293,7 +293,7 @@ export default {
         'my-icon-delete',
         'my-icon-delete-solid',
         'my-icon-eleme',
-        'my-icon-platform-eleme'
+        'my-icon-platform-eleme',
       ],
     };
   },
