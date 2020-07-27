@@ -7,20 +7,19 @@ import router from './router'
 import store from './vuex/store.js'
 import {post,get} from '@/utils/http'   // axois封装
 import ElementUI from 'element-ui'
-import BaiduMap from 'vue-baidu-map'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/css/css.js'
 import bilibili from '@/utils/bilibili.js'
 
 console.log('main.js加载');
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false  // 设置成false取消vue启动时生成生产提示
+
+if(process.env.NODE_ENV != 'development'){  // 生产环境
+  Vue.config.silent = true // 取消 Vue 所有的日志与警告，生成环境下使用
+}
 
 Vue.use(ElementUI)
-Vue.use(BaiduMap, {
-  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: 'kj5X1TWZYyxA6d8LsTDT0MwiqNqsmlqw'
-})
 Vue.prototype.$post=post;  // use way: this.$post(url,data).then(res => {})
 Vue.prototype.$get=get;
 
