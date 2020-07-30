@@ -1,4 +1,4 @@
-export function isDef(val) {
+export function isDef(val) {  // 值存在
   return val !== undefined && val !== null;
 }
 export function isKorean(text) {   // 是否为韩文或朝鲜文    uAC00-uD7AF为韩文unicode编码  u3130-u318F为朝鲜的

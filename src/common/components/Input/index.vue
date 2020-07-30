@@ -22,9 +22,8 @@
     19.resize: boolean,是否能被用户缩放,可选值:none,both,horizontal,vertical
     20.autofocus: boolean,原生属性,自动获取焦点
     21.form: string,原生属性
-    22.label: string,输入框关联的label文字
-    23.tabindex: string,输入框的tabindex
-    24.validate-event: boolean 输入时是否触发表单校验
+    22.tabindex: string,输入框的tabindex
+    23.validate-event: boolean 输入时是否触发表单校验
   3.插槽:
     <i slot="suffix" class="my-input__icon my-icon-date"></i>
     <i slot="suffix" class="my-input__icon my-icon-date"></i>
@@ -232,7 +231,7 @@
         });
       },
       inputSize() { // 尺寸
-        return this.size || this._myFormItemSize;
+        return this.size || this._myFormItemSize || (this.$MYELEMENT || {}).size;
       },
       inputDisabled() { // 是否禁用
         return this.disabled || (this.myForm || {}).disabled

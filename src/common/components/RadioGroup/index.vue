@@ -3,14 +3,8 @@
   1.引入: import {当前组件名称} from '@/common/components/AAIndex'
   2.接受属性:
     必填项: 无
-    可选项:
-      1.v-model: 绑定的单选值
-      2.textcolor: String,radio激活时文本色
-      3.fill: String, radio激活时填充色
-      4.disabled: Boolean,是否禁用按钮
-      5.size: String,大小，ex:small/mini
-  3.方法:
-    @change   携带参数:值改变事件
+    区别:
+      1.size: String,大小，ex:big/small/smaller/mini
 -->
 <template>
   <div class="my-radio-group">
@@ -47,7 +41,7 @@ export default {
       return (this.myFormItem || {})._myFormItemSize
     },
     radioGroupSize(){
-      return this.size || this._myFormItemSize
+      return this.size || this._myFormItemSize || (this.$MYELEMENT || {}).size;
     }
   },
   watch: {

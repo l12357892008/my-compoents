@@ -14,7 +14,7 @@ export default function bilibili() {
     '    ## hh      wwww      hh ##      \\ \\_______\\\\ \\__\\\\ \\_______\\\\ \\__\\\\ \\_______\\\\ \\__\\\\ \\_______\\\\ \\__\\  ',
     '    ## hh                hh ##       \\|_______| \\|__| \\|_______| \\|__| \\|_______| \\|__| \\|_______| \\|__|  ',
     '    ## MMMMMMMMMMMMMMMMMMMM ##                                                                            ',
-    '    ##MMMMMMMMMMMMMMMMMMMMMM##                        bilibili - ( ゜- ゜)つロロ 乾杯~ .                   ',
+    '    ##MMMMMMMMMMMMMMMMMMMMMM##                                                                            ',
     '         \\/            \\/                                                                                 ',
   ]
   const aa = [

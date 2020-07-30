@@ -1,0 +1,214 @@
+@import "common/var";
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "input.scss";
+
+@include b(input-number){
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  line-height: #{$input-height - 2};
+  @include utils-user-select(none);
+
+  .my-input {
+    display: block;
+
+    & >>> .my-input__inner {
+      -webkit-appearance: none;
+      padding-left: #{$input-height + 10};
+      padding-right: #{$input-height + 10};
+      text-align: center;
+    }
+  }
+
+  @include e((decrease, increase)){
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    bottom: 1px;
+    width: $input-height;
+    height: auto;
+    text-align: center;
+    cursor: pointer;
+    background: $background-color-base;
+    color: $color-text-regular;
+    font-size: #{$font-size-base - 1};
+    &:hover {
+      color: $color-primary;
+
+      &:not(.is-disabled) .my-input{
+        & >>> .my-input__inner:not(.is-disabled) {
+          border-color: $input-focus-border;
+        }
+      }
+    }
+
+    &.is-disabled {
+      color: $disabled-color-base;
+      cursor: not-allowed;
+    }
+  }
+  @include e(increase) {
+    right: 1px;
+    border-radius: 0 $input-border-radius $input-border-radius 0;
+    border-left: $border-default;
+  }
+  @include e(decrease) {
+    left: 1px;
+    border-radius: $input-border-radius 0 0 $input-border-radius;
+    border-right: $border-default;
+  }
+  @include when(disabled) {
+    @include e((increase, decrease)) {
+      border-color: $disabled-border-base;
+      color: $disabled-border-base;
+
+      &:hover {
+        color: $disabled-border-base;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include m(big) {
+    width: 200px;
+    line-height: #{$input-big-height - 2};
+
+    @include e((increase, decrease)) {
+      width: $input-big-height;
+      font-size: $input-big-font-size;
+    }
+
+    .my-input >>> .my-input__inner {
+      padding-left: #{$input-big-height + 7};
+      padding-right: #{$input-big-height + 7};
+    }
+  }
+
+  @include m(small) {
+    width: 160px;
+    line-height: #{$input-small-height - 2};
+
+    @include e((increase, decrease)) {
+      width: $input-small-height;
+      font-size: $input-small-font-size;
+    }
+
+    .my-input >>> .my-input__inner {
+      padding-left: #{$input-small-height + 7};
+      padding-right: #{$input-small-height + 7};
+    }
+  }
+
+  @include m(smaller) {
+    width: 130px;
+    line-height: #{$input-smaller-height - 2};
+
+    @include e((increase, decrease)) {
+      width: $input-smaller-height;
+      font-size: $input-smaller-font-size;
+
+      [class*=el-icon] {
+        transform: scale(.9);
+      }
+    }
+
+    .my-input >>> .my-input__inner {
+      padding-left: #{$input-smaller-height + 7};
+      padding-right: #{$input-smaller-height + 7};
+    }
+  }
+
+  @include m(mini) {
+    width: 130px;
+    line-height: #{$input-mini-height - 2};
+
+    @include e((increase, decrease)) {
+      width: $input-mini-height;
+      font-size: $input-mini-font-size;
+
+      [class*=el-icon] {
+        transform: scale(.8);
+      }
+    }
+
+    .my-input >>> .my-input__inner {
+      padding-left: #{$input-mini-height + 7};
+      padding-right: #{$input-mini-height + 7};
+    }
+  }
+
+  @include when(without-controls) {
+    & >>> .my-input__inner {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+
+  @include when(controls-right) {
+    & >>> .my-input__inner {
+      padding-left: 15px;
+      padding-right: #{$input-height + 10};
+    }
+
+    @include e((increase, decrease)) {
+      height: auto;
+      line-height: #{($input-height - 2) / 2};
+
+      [class*=my-icon] {
+        transform: scale(.8);
+      }
+    }
+
+    @include e(increase) {
+      right: 1px;
+      bottom: auto;
+      top: 1px;
+      left: auto;
+      border-radius: 0 $input-border-radius 0 0;
+      border-bottom: $border-default;
+    }
+
+    @include e(decrease) {
+      right: 1px;
+      bottom: 1px;
+      top: auto;
+      left: auto;
+      border-right: none;
+      border-left: $border-default;
+      border-top: $border-default;
+      border-radius: 0 0 $input-border-radius 0;
+    }
+
+    &[class*=big] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($input-big-height - 2) / 2};
+      }
+    }
+
+    &[class*=small] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($input-small-height - 2) / 2};
+      }
+    }
+
+    &[class*=smaller] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($input-smaller-height - 2) / 2};
+      }
+    }
+
+    &[class*=mini] {
+      [class*=increase], [class*=decrease] {
+        line-height: #{($input-mini-height - 2) / 2};
+      }
+    }
+  }
+}
+
+/* 虽然基本没人用ie了,但还是保险点,清除掉ie浏览器自带的用来清除的那个 x */
+.my-input__inner::-ms-clear{
+  display: none;
+  width: 0;
+  height: 0;
+}

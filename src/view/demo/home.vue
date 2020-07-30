@@ -114,6 +114,30 @@
         <template slot="append">.com</template>
       </el-input>
     </div>
+    <br />InputNumber:
+    <br />
+    <div style="margin-left:10px">
+      <my-input-number size='smaller' controls-position='right' v-model="num" @change="handleChange" :min="1" :max="10" label="描述文字"></my-input-number>
+      <el-input-number size='small' controls-position="right" v-model="num" :precision='4' :step="1.55" @change="handleChange" :min="1" :max="10" label="描述文字"></el-input-number>
+    </div>
+    <br />checkbox:
+    <br />
+    <div class="radio" style="margin-left:10px">
+      <my-checkbox v-model="radioValue" label="1" cc="sdafads" @bb="cc"></my-checkbox>
+      <my-checkbox v-model="radioValue" label="2" border size="mini">我是2</my-checkbox>
+      <my-checkbox v-model="radioValue" label="3" button></my-checkbox>
+      <my-checkbox v-model="radioValue" label="3" button disabled></my-checkbox>
+      <my-checkbox v-model="radioValue" label="3" border disabled></my-checkbox>
+      <br />
+      <el-checkbox v-model="radioValue" label="1"></el-checkbox>
+      <el-checkbox v-model="radioValue" label="2" border size="mini">我是2</el-checkbox>
+      <el-checkbox v-model="radioValue" label="1" disabled border></el-checkbox>
+      <br />原生写法:
+      <label>
+        <input id="jj" type="checkbox" value="2" v-model="radioValue" />
+        sdafasdf
+      </label>
+    </div>
   </div>
 </template>
 
@@ -121,10 +145,12 @@
 import {
   MyButton,
   MyButtonGroup,
+  MyCheckbox,
   MyLink,
   MyRadio,
   MyRadioGroup,
-  MyInput
+  MyInput,
+  MyInputNumber
 } from "@/common/index.js";
 import { _debounce, _throttle } from "@/utils/de-tro";
 export default {
@@ -137,6 +163,7 @@ export default {
       radioValue: "4",
       ew: 30,
       dd: "<div>sb</div>",
+      num: 'sd',
       asd: {
         dsa: {
           cc: 3
@@ -157,19 +184,11 @@ export default {
     throttle: _throttle(() => {
       console.log("asd");
     }, 1000),
-    ccd() {
-      console.log("d");
-    },
-    cca() {
-      console.log("a");
-    },
-    ccw() {
-      console.log("w");
-      this.$emit("qwe", "w");
-      this.$on("asdf", "2");
+    handleChange(){
+
     }
   },
-  components: { MyButton,MyButtonGroup,MyLink,MyRadio,MyRadioGroup,MyInput }
+  components: { MyButton,MyButtonGroup,MyCheckbox,MyLink,MyRadio,MyRadioGroup,MyInput,MyInputNumber }
 };
 </script>
 

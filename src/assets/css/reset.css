@@ -98,6 +98,7 @@ a {
 ::-webkit-scrollbar-button:single-button{}
 ::-webkit-scrollbar-track { /*滚动条轨道*/
 	background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-track-piece {   /*滚动条没有滑块的轨道部分.*/
   background-color: rgba(0, 0, 0, 0.2);

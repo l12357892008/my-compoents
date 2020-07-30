@@ -87,7 +87,7 @@ export default {
     },
     /* 根据父组件传入的值和祖先组件Form中的设置计算按钮尺寸 */
     buttonSize() {
-      const temButtonSize = this.size || this.myForm.myFormItemSize
+      const temButtonSize = this.size || this.myForm.myFormItemSize || (this.$MYELEMENT || {}).size;
       return this.isGroup 
         ? temButtonSize || this._buttonGroup.buttonGroupSize 
         : temButtonSize;
