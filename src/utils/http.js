@@ -77,7 +77,6 @@ axios.interceptors.response.use(
  * @param data
  * @returns {Promise}
  */
-
 export function get(url, params = {}) {
   return new Promise((resolve, reject) => {
     axios.get(url, {
@@ -89,15 +88,12 @@ export function get(url, params = {}) {
     })
   })
 }
-
-
 /**
  * 封装post请求
  * @param url
  * @param data
  * @returns {Promise}
  */
-
 export function post(url, data = {}) {
   let token = localStorage.getItem('token')
   return new Promise((resolve, reject) => {
@@ -115,7 +111,6 @@ export function post(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function patch(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.patch(url, data)
@@ -133,7 +128,6 @@ export function patch(url, data = {}) {
  * @param data
  * @returns {Promise}
  */
-
 export function put(url, data = {}) {
   return new Promise((resolve, reject) => {
     axios.put(url, data)

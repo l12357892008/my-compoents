@@ -65,5 +65,5 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "proxy" : "http://10.5.11.78:9999"
+  "proxy": "http://10.5.11.78:9999"
 }

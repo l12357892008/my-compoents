@@ -1,6 +1,6 @@
 <template>
   <div id="hello" class="flex_row_center">
-    <div class="block flex_center hover_big" v-for="item in pages" :key='item.src' @click='go(item.src)'>
+    <div class="block flex_center hover_big hover_blue" v-for="item in pages" :key='item.src' @click='go(item.src)'>
       <div style="text-align:center">{{item.name}}</div>
     </div>
   </div>
@@ -84,12 +84,14 @@
   #hello {
     flex-wrap: wrap;
     align-content: flex-start;
+    padding: 20px 50px;
   }
   .block{
     width: 150px;
     height: 150px;
     background: pink;
     flex: none;
+    margin: 5px;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
