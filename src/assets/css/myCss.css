@@ -41,6 +41,14 @@
   align-items: center;
 }
 
+.flex_between {
+  justify-content: space-between;
+}
+
+.flex_around {
+  justify-content: space-around;
+}
+
 .flex { /*有空闲位置放大，位置不够也不缩小*/
   flex: 1 0;
 }
@@ -75,46 +83,6 @@
   box-shadow: 10px 10px 99px 6px rgba(185, 231, 105, 1);
 }
 
-.flutter { /*左右抖动*/
-  animation: flu infinite 0.2s linear;
-}
-
-@keyframes flu {
-  0% {
-    transform: translateX(2px);
-  }
-
-  50% {
-    transform: translateX(-2px);
-  }
-
-  100% {
-    transform: translateX(2px);
-  }
-}
-
-.beforeDot::before { /* 前面一个圆点 */
-  content: '';
-  margin-left: -20px;
-  margin-right: 11px;
-  display: inline-block;
-  height: 9px;
-  width: 9px;
-  border-radius: 50%;
-  background: #FFD43D;
-}
-
-.doubleDot{ /* 双层圆点 */
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  padding: 10px;
-  border: 10px solid;
-  border-radius: 50%;
-  background-color: currentColor;
-  background-clip: content-box;
-}
-
 .noSelect{  /* 禁止选中 */
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -124,8 +92,20 @@
   user-select: none;
 }
 
-.disabled {  // 禁止点击
+.disabled {  /* 禁止点击 */
   pointer-events: none;
   cursor: default;
-  opacity: 0.6;
+  opacity: 0.7;
+}
+
+/*清除浮动*/
+.clearfloat {
+    display: inline-table
+}
+.clearfloat:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
 }

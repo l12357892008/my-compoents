@@ -50,8 +50,8 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 /* 修改placehold颜色 */
-input::-webkit-input-placeholder,input::-moz-input-placeholder,input::-ms-input-placeholder {
-  color: #ccc;
+input::-webkit-input-placeholder,input::-moz-placeholder,input:-ms-input-placeholder{
+  color: red;
 }
 
 /* HTML5 display-role reset for older browsers */

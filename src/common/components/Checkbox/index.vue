@@ -157,18 +157,18 @@ export default {
         textColorBorder:{color: this._radioGroup.fill || ""}
       };
     },
-    radioSize() {
-      const temRadioSize =
+    checkboxSize() {   // 计算后的尺寸 big small smaller mini
+      const temCheckboxSize =
         this.size ||
         (this.myFormItem || {}).myFormItemSize ||
         (this.$MYELEMENT || {}).size;
       return this.isGroup
-        ? this._radioGroup.radioGroupSize || temRadioSize
-        : temRadioSize;
+        ? this._checkboxGroup.checkboxGroupSize || temCheckboxSize
+        : temCheckboxSize;
     },
-    isDisabled() {
-      return this._radioGroup
-        ? this._radioGroup.disabled ||
+    isDisabled() {   // 是否禁用
+      return this._checkboxGroup
+        ? this._checkboxGroup.disabled ||
             this.disabled ||
             (this.myForm || {}).disabled
         : this.disabled || (this.myForm || {}).disabled;

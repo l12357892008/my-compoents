@@ -14,4 +14,4 @@ export function getBase64(file) {
       resolve(imgResult);
     };
   });
-},
+}
