@@ -51,7 +51,9 @@ export function merge(target) {
 const deepClone = obj => {
     let clone = Object.assign({}, obj);
     Object.keys(clone).forEach(key => {
-      clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+      if(obj.hasOwnProperty(key)) {  // 为啥要用hasOwnProperty？不需要从对象的原型链上进行复制
+          clone[key] = typeof obj[key] === 'object' ? deepClone(obj[key]) : obj[key]
+      }
     });
     return Array.isArray(obj) ? (clone.length = obj.length) && Array.from(clone) : clone;
 };

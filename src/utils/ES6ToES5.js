@@ -17,8 +17,8 @@ function es5Promise(){
 }
 
 /**
- * 原生实现Ajax请求
+ * 封装完善的Ajax请求
  */
 function Ajax(){
-  
+
 }
