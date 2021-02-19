@@ -92,10 +92,10 @@
   user-select: none;
 }
 
-.disabled {  /* 禁止点击 */
+.disabled {  /* 禁用鼠标 */
   pointer-events: none;
   cursor: default;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /*清除浮动*/

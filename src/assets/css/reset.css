@@ -53,6 +53,9 @@ input[type="number"] {
 input::-webkit-input-placeholder,input::-moz-placeholder,input:-ms-input-placeholder{
   color: red;
 }
+input:focus::-webkit-input-placeholder{
+  color: blue;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

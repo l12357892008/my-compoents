@@ -68,6 +68,11 @@ const routes = [{
     component: () => import('@/view/VerifiedFont')
   },
   {
+    path: '/animations',
+    name: 'Animations',
+    component: () => import('@/view/animations')
+  },
+  {
     path: '*',
     redirect: '/404-2'
   }

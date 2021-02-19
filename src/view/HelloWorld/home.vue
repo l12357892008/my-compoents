@@ -14,60 +14,24 @@
     data() {
       return {
         pages: [
-          {
-            src: '/demo',
-            name: '练习用',
-          },
-          {
-            src: '/icon',
-            name: '图标一览'
-          },
-          {
-            src: '/magicBox',
-            name: '旋转魔方'
-          },
-          {
-            src: '/login',
-            name: '登录界面'
-          },
-          {
-            src: '/asdfsd',
-            name: '静态404界面'
-          },
-          {
-            src: '/404-2',
-            name: '弹幕式404界面'
-          },
-          {
-            src: '/digitalRain',
-            name: '数字雨'
-          },
-          {
-            src: '/gallery3D',
-            name: '3D画廊'
-          },
-          {
-            src: '/waterMark',
-            name: '水印'
-          },
-          {
-            src: '/svgFont',
-            name: 'svg文字边框'
-          },
-          {
-            src: '/7CSS',
-            name: '包裹式文字'
-          },
-          {
-            src: '/VerifiedFont',
-            name: '验证码文字'
-          }
+          { name: '练习用', src: '/demo' },
+          { name: '图标一览', src: '/icon' },
+          { name: '旋转魔方', src: '/magicBox'  },
+          { name: '登录界面', src: '/login'  },
+          { name: '静态404界面', src: '/404' },
+          { name: '弹幕式404界面', src: '/404-2' },
+          { name: '数字雨', src: '/digitalRain' },
+          { name: '3D画廊', src: '/gallery3D' },
+          { name: '水印', src: '/waterMark' },
+          { name: 'svg文字边框', src: '/svgFont' },
+          { name: 'CSS3套路', src: '/7CSS' },
+          { name: '验证码文字', src: '/VerifiedFont' },
+          { name: '动画套路', src: '/animations' }
         ]
       }
     },
     mounted() {
-      mutations.setUserInfo(
-      {
+      mutations.setUserInfo({
         name: 'sdafasdf',
       })
     },
