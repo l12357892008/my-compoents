@@ -34,6 +34,16 @@
          <div class="tt3"></div>
        </div>
     </div>
+    <div id="type3">
+      <div class="bg-grid black-theme flex_center">复杂背景动画</div>
+      <div class="bg-grid black-theme animate-grid" style="margin-left: 50px;"></div>
+      <div class="bg-qi black-theme flex_center">棋盘背景</div>
+      <div class="t4 flex_col_middle">
+        <div class="fold">折角效果</div>
+        <div class="fold linear">折角效果</div>
+        <div class="fold-1">内阴影原折角</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -102,7 +112,7 @@ export default {
     margin-left: 40px;
     width: 450px;
     .right_title{
-      /* 数字的展现样式，感觉没啥吊用 */
+      /* 数字的展现样式，感觉没啥用 */
       font-size: 30px;
       font-variant-numeric: oldstyle-nums;
     }
@@ -187,11 +197,107 @@ export default {
       width: 80%;
       height: 20%;
       border-radius: 10px;
-      background: linear-gradient(to right,#fb3 50%,#58a 0%);
-      background-size: 80px 100%;
+      background: repeating-linear-gradient(60deg,#fb3,#fb3 15px,#58a 0,#58a 30px);
+      background-size: 70px 100%;
       box-shadow: inset 0 0 3px #555;  /*inset向内扩张*/
     }
   }
 }
+#type3{
+  display: flex;
+  font-size: 30px;
+  color: white;
+  margin-top: 20px;
+  .bg-grid{
+    background-color: black;
+    width: 300px;
+    height: 300px;
+    background-image: linear-gradient(rgba(255,255,255,1) 2px,transparent 0),
+    linear-gradient(to right,rgba(255,255,255,1) 2px,transparent 0),
+    linear-gradient(rgba(255,255,255,.2) 1px,transparent 0),
+    linear-gradient(to right,rgba(255,255,255,.2) 1px,transparent 0);
+    background-position: -50px -50px;
+    background-size: 100px 100px,100px 100px, 100% 10px, 10px 100%;
+    /* background-repeat: no-repeat; */
+  }
+  .animate-grid{
+    animation: move-grid 6s linear infinite;
+  }
+  @keyframes move-grid{
+    0%{
+      background-position: -50px -50px;
+    }
+    30%{
+      background-position: -100px -100px;
+    }
+    60%{
+      background-position: -100px -150px;
+    }
+    100%{
+      background-position: -50px -50px;
+    }
+  }
 
+  .bg-qi{
+    width: 300px;
+    height: 300px;
+    background-color: #eee;
+    background-image: linear-gradient(45deg,rgba(0,0,0,.25) 25%,transparent 0,transparent 75%,rgba(0,0,0,.25) 0),
+    linear-gradient(45deg,rgba(0,0,0,.25) 25%,transparent 0,transparent 75%,rgba(0,0,0,.25) 0);
+    background-position: 0 0, 20px 20px;
+    background-size: 40px 40px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+
+    margin-left: 50px;
+    color: black;
+  }
+
+  .t4{
+    width: 300px;
+    height: 300px;
+    background-color: rgba(0,0,0,0.9);
+    margin-left: 50px;
+    justify-content: space-around;
+    font-size: 14px;
+    .fold{
+      text-align: center;
+      width: 200px;
+      height: 80px;
+      color: #fff;
+      line-height: 80px;
+
+      /* 100% 0 / 2em 2em   前面两个是background-position   /后面的是background-size */
+      background: linear-gradient(to left bottom,transparent 50%,rgba(0,0,0,.5) 0) no-repeat 100% 0 / 2em 2em,
+                  linear-gradient(-135deg,transparent 1.4em,#06c 0);
+    }
+    .linear{
+      background: linear-gradient(to left bottom,transparent 50%,rgba(0,0,0,.5)) no-repeat 100% 0 / 2em 2em,
+                  linear-gradient(-135deg,transparent 1.4em,#06c);
+    }
+
+    .fold-1{
+      position: relative;
+      width: 200px;
+      height: 80px;
+      border-radius: .5em;
+      color: #fff;
+      line-height: 80px;
+      text-align: center;
+      background: linear-gradient(-150deg,transparent 1.5em, #58a 0);
+    }
+    .fold-1::before{
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(to left bottom,transparent 50%,rgba(0,0,0,.2) 0,rgba(0,0,0,.4)) 100% 0 no-repeat;
+      width: 1.73em;
+      height: 3em;
+      transform: translateY(-1.3em) rotate(-30deg);
+      transform-origin: bottom right;
+      border-bottom-left-radius: inherit;
+      box-shadow: -.2em .2em .3em -.1em rgba(0,0,0,.15);
+    }
+  }
+}
 </style>
